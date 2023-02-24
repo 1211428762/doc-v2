@@ -14,10 +14,12 @@ export default defineClientConfig({
     app.use(ElementPlus).use(globalFuns)
     if (!__VUEPRESS_SSR__) {
       app.config.globalProperties.$ftoast = toastInstance()
-      inspiration.loadCatDependence()
-      setTimeout(() => {
-        app.provide('$L2Dwidget', L2Dwidget)
-      }, 3000)
+      // console.log()
+      // inspiration.loadCatDependence().then((res) => {
+      //   app.provide('$L2Dwidget', window.L2Dwidget)
+      //   console.log(window.L2Dwidget)
+      // })
+      // console.log(window.L2Dwidget)
     }
     for (const icon in Icons) {
       // eslint-disable-next-line import/namespace

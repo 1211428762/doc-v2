@@ -5,7 +5,7 @@ import { getDirname, path } from '@vuepress/utils'
 const __dirname = getDirname(import.meta.url)
 export default defineUserConfig({
   base: '/doc-v2/',
-
+  dest: './dist',
   locales: {
     '/': {
       lang: 'en-US',

@@ -35,10 +35,10 @@ export const enSidebar = sidebar({
     },
   ],
   '/flow/': [
-    { text: '引言', link: '/flow/' },
+    // { text: '引言', link: '/flow/' },
     {
       text: 'button',
-      link: '/flow/button',
+      link: '/flow/',
     },
     {
       text: 'viewport',

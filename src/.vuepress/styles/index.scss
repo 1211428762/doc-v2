@@ -29,14 +29,14 @@ iframe {
   left: 0;
   border: none;
   top: 80px;
-  z-index: 10;
+  z-index: 100;
   margin-top: 0 !important;
 }
 
 .iframe-title {
   top: 60px;
   position: fixed;
-  z-index: 11;
+  z-index: 101;
 }
 
 .scroll-bar::-webkit-scrollbar {

@@ -1,8 +1,20 @@
-import _ from 'lodash'
+function debounce(fn, wait = 300) {
+  let timer = null
+  return function (...args) {
+    // this保存给context
+    const context = this
+    // 如果已经设定过定时器就清空上一次的定时器
+    if (timer) clearTimeout(timer)
+    // 开始设定一个新的定时器，定时器结束后执行传入的函数 fn
+    timer = setTimeout(() => {
+      fn.apply(context, args)
+    }, wait)
+  }
+}
 
 //监听滚动条
 export default {
-  scrollTop: _.debounce(function () {
+  scrollTop: debounce(function () {
     if (!__VUEPRESS_SSR__) {
       let scroll = document.documentElement.scrollTop || document.body.scrollTop
       console.log(scroll)
@@ -15,7 +27,7 @@ export default {
         // 全局注册点击事件
         document.addEventListener(
           'mousedown',
-          _.debounce(function (event) {
+          debounce(function (event) {
             let target = event.target
             target.style.setProperty('--offsetx', event.offsetX + 'px')
             target.style.setProperty('--offsety', event.offsetY + 'px')
@@ -101,9 +113,16 @@ export default {
     this.addDog()
   },
   loadCatDependence() {
-    let script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = '/doc-v2/cat-live2d/l2dwidget.min.js'
-    document.head.appendChild(script)
+    return new Promise(function (resolve) {
+      if (!window.L2Dwidget) {
+        let script = document.createElement('script')
+        script.src = '/doc-v2/cat-live2d/l2dwidget.min.js'
+        script.onload = () => resolve(script)
+        script.onerror = () => reject(new Error(`Script load error `))
+        document.head.append(script)
+      } else {
+        resolve()
+      }
+    })
   },
 }

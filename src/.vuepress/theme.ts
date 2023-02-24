@@ -26,7 +26,7 @@ export default hopeTheme({
       // sidebar
       sidebar: enSidebar,
 
-      footer: 'Default footer',
+      // footer: 'Default footer',
 
       displayFooter: true,
 

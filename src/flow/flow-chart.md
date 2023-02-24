@@ -1,7 +1,7 @@
 <h1>流程图</h1>
 主要包含流程图，增删改基本功能以及样式形状，数据打印操作
 <ClientOnly>
-<FlowChart  style="width:1000px !important ;  position: relative; left: -250px;"  ></FlowChart>
+<FlowChart  style="width:1000px !important ;  position: relative; left: -170px;"  ></FlowChart>
 </ClientOnly>
 ### Attributes
 
