@@ -103,7 +103,7 @@ export default {
   loadCatDependence() {
     let script = document.createElement('script')
     script.type = 'text/javascript'
-    script.src = '/cat-live2d/l2dwidget.min.js'
+    script.src = '/doc-v2/cat-live2d/l2dwidget.min.js'
     document.head.appendChild(script)
   },
 }

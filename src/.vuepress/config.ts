@@ -1,4 +1,5 @@
 import { defineUserConfig } from 'vuepress'
+import { viteBundler } from '@vuepress/bundler-vite'
 import theme from './theme.js'
 import { getDirname, path } from '@vuepress/utils'
 const __dirname = getDirname(import.meta.url)
@@ -17,6 +18,11 @@ export default defineUserConfig({
     //   description: 'vuepress-theme-hope 的文档演示',
     // },
   },
+  // bundler: viteBundler({
+  //   viteOptions: {
+  //     build: { outDir: './' },
+  //   },
+  // }),
 
   alias: {
     '@': path.resolve(__dirname, ''), // 这样配置后 @ 可以指向 src 目录
