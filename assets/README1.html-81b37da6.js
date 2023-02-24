@@ -1,0 +1,1 @@
+import{aL as s,O as a,P as c,af as e,Q as r,C as t}from"./framework-127c80d8.js";const _={name:"",data(){return{}},mounted(){},methods:{}},p=r("p",null,"##写在前面 未来将集成较为常用的组件(主要为特效展示类),持续开发中",-1);function l(m,d,u,f,i,h){const o=t("cube"),n=t("pet");return a(),c("div",null,[p,e(o),e(n)])}const $=s(_,[["render",l],["__file","README1.html.vue"]]);export{$ as default};
