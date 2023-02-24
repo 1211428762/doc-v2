@@ -1,0 +1,28 @@
+import { defineUserConfig } from 'vuepress'
+import theme from './theme.js'
+import { getDirname, path } from '@vuepress/utils'
+const __dirname = getDirname(import.meta.url)
+export default defineUserConfig({
+  base: '/',
+
+  locales: {
+    '/': {
+      lang: 'en-US',
+      title: 'Flow-UI',
+      description: 'Flow-UI plus',
+    },
+    // '/zh/': {
+    //   lang: 'zh-CN',
+    //   title: '文档演示',
+    //   description: 'vuepress-theme-hope 的文档演示',
+    // },
+  },
+
+  alias: {
+    '@': path.resolve(__dirname, ''), // 这样配置后 @ 可以指向 src 目录
+  },
+  theme,
+
+  // Enable it with pwa
+  // shouldPrefetch: false,
+})
