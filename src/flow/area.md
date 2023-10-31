@@ -1,17 +1,17 @@
   <div>
     <cube/><pet/>
-    <h1>地区选择</h1>
-    <h3>默认</h3>
+    <h1>Region Selection</h1>
+    <h3>Default</h3>
     <areaSelect></areaSelect>
-    <h3>隐藏区域</h3>
+    <h3>Hidden Region</h3>
     <areaSelect hideArea></areaSelect>
-    <h3>只显示省</h3>
+    <h3>Only Show Province</h3>
     <areaSelect onlyProvince></areaSelect>
-    <h3>置灰 provinceDisabled/cityDisabled/areaDisabled</h3>
+    <h3>Grayed Out - provinceDisabled/cityDisabled/areaDisabled</h3>
     <areaSelect provinceDisabled cityDisabled areaDisabled> </areaSelect>
-    <h3>自定义placeholder</h3>
+    <h3>Custom Placeholder</h3>
     <areaSelect :placeholders="placeholders"> </areaSelect>
-    <h3>初始值</h3>
+    <h3>Initial Values</h3>
     <areaSelect
       @city-selected="citySelected"
       :province.sync="province"
@@ -25,23 +25,22 @@ export default {
   name: "",
   data() {
     return {
-      province: "广东省",
-      city: "深圳市",
-      area: "南山区",
+      province: "Guangdong",
+      city: "Shenzhen",
+      area: "Nanshan District",
       resetBtn: {
-        word: "重置",
+        word: "Reset",
       },
-
       placeholders: {
-        province: "-- 请选择省 --",
-        city: "-- 请选择市 --",
-        area: "-- 请选择区 --",
+        province: "-- Please select province --",
+        city: "-- Please select city --",
+        area: "-- Please select area --",
       },
     };
   },
   methods: {
     citySelected(val) {
-      console.log("选择的区域--->", val);
+      console.log("Selected Region--->", val);
     },
   },
 };
@@ -49,41 +48,41 @@ export default {
 
 ### Attributes
 
-| 参数             | 说明                | 类型           | 可选值       | 默认值 |
-| ---------------- | ------------------- | -------------- | ------------ | ------ |
-| province         | 省                  | String, Number | 10000,北京市 |        |
-| city             | 市                  | String, Number |              |        |
-| area             | 区                  | String, Number |              |        |
-| hideArea         | 隐藏区              | Boolean        |              | false  |
-| onlyProvince     | 只显示省            | Boolean        |              | false  |
-| provinceDisabled | 置灰不可用          | Boolean        |              | false  |
-| cityDisabled     | 置灰不可用          | Boolean        |              | false  |
-| areaDisabled     | 置灰不可用          | Boolean        |              | false  |
-| placeholders     | 自定义 placeholders | Object         |              |        |
+| Parameter        | Description           | Type            | Optional Values | Default |
+| ----------------- | ---------------------- | --------------- | --------------- | ------- |
+| province          | Province               | String, Number  | 10000, Beijing  |         |
+| city              | City                   | String, Number  |                 |         |
+| area              | Area                   | String, Number  |                 |         |
+| hideArea          | Hide Area              | Boolean         |                 | false   |
+| onlyProvince      | Only Show Province     | Boolean         |                 | false   |
+| provinceDisabled  | Disable Province       | Boolean         |                 | false   |
+| cityDisabled      | Disable City           | Boolean         |                 | false   |
+| areaDisabled      | Disable Area           | Boolean         |                 | false   |
+| placeholders      | Custom Placeholders    | Object          |                 |         |
 
 ### Event
 
-| 名称          | 描述                                                       |
-| ------------- | ---------------------------------------------------------- |
-| reset         | 组件数据重置方法,需求获取组件实例                          |
-| city-selected | 组件选择的数据,返回格式'{province:"xx",city:"xx",area:""}' |
+| Name           | Description                                           |
+| -------------- | ----------------------------------------------------- |
+| reset          | Component data reset method, requires getting the component instance |
+| city-selected  | Selected component data, returned in the format '{province:"xx",city:"xx",area:""}' |
 
-::: details 查看代码
+::: details View Code
 
 ```vue
 <template>
   <areaSelect />
-  //默认
+  // Default
   <areaSelect hideArea />
-  //隐藏区域
+  // Hidden Region
   <areaSelect onlyProvince />
-  //只显示省
+  // Only Show Province
   <areaSelect provinceDisabled cityDisabled areaDisabled />
-  // 置灰不可用
+  // Disable Province, City, and Area
   <areaSelect :placeholders="placeholders" />
-  //placeholders: { // province: "-- 请选择省 --", // city: "-- 请选择市 --", // area: "-- 请选择区 --", // }
+  //placeholders: { // province: "-- Please select province --", // city: "-- Please select city --", // area: "-- Please select area --", // }
   <areaSelect @city-selected="citySelected" :province.sync="province" :city.sync="city" :area.sync="area" />
-  //初始值,以及选择的值,看看控制台
+  // Initial values and selected values, check the console
 </template>
 ```
 

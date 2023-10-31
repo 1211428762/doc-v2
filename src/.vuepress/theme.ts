@@ -4,7 +4,6 @@ import { enSidebar, zhSidebar } from './sidebar/index.js'
 
 export default hopeTheme({
   hostname: 'https://github.com/1211428762',
-
   author: {
     name: 'コユキ',
     url: '',

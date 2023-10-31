@@ -95,8 +95,8 @@
         background
         :page-size="pageSize"
         layout="prev, pager, next"
-        prev-text="上一页"
-        next-text="下一页"
+        prev-text="Prev"
+        next-text="Next"
         :total="total"
         :current-page="currentPage"
         @current-change="handleCurrentChange"

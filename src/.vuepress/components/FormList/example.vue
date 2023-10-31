@@ -1,32 +1,32 @@
 <template>
   <div>
     <FormList @handle-event="handleEvent" v-model:elForm="elForm" ref="formList" :fieldList="formItem">
-      <!-- 普通插槽 -->
-      <!-- 原templateData写法, 现在不用在父组件定义,使用插槽即可, 用法与之前相同 -->
+      <!-- Normal slot -->
+      <!-- The original templateData usage is no longer needed in the parent component; you can use slots now, just like before. -->
       <template #testSlot="{ templateData }">
         <el-input v-model="templateData.testSlot"></el-input>
       </template>
-      <!-- 输入框的Prefix 插槽 -->
+      <!-- Input prefix slot -->
       <template #testPrefix>
-        <div>输入框的Prefix 插槽</div>
+        <div>Input prefix slot</div>
       </template>
-      <!-- 输入框的Suffix 插槽 -->
+      <!-- Input suffix slot -->
       <template #testSuffix>
-        <div>输入框的Suffix 插槽</div>
+        <div>Input suffix slot</div>
       </template>
-      <!-- 原生el-form-item -->
+      <!-- Original el-form-item -->
       <template #testNativeSlot="{ templateData }">
-        <el-form-item prop="testNativeSlot" label="原生插槽" :rules="[{ required: true }]">
+        <el-form-item prop="testNativeSlot" label="Native slot" :rules="[{ required: true }]">
           <el-input v-model="templateData.testNativeSlot"></el-input>
         </el-form-item>
       </template>
 
       <template #footer>
-        <el-button @click="submit"> 提交 </el-button>
-        <el-button @click="submit"> 返回 </el-button>
+        <el-button @click="submit">Submit</el-button>
+        <el-button @click="submit">Back</el-button>
       </template>
     </FormList>
-    <el-button @click="getSelect">获取异步数据</el-button>
+    <el-button @click="getSelect">Fetch Asynchronous Data</el-button>
   </div>
 </template>
 <script>
@@ -46,22 +46,22 @@ export default {
       formItem: [
         {
           type: 'input',
-          label: '输入框',
+          label: 'Input',
           prop: 'test',
           rules: [{ required: true }],
         },
         {
           type: 'select',
-          label: '下拉框',
+          label: 'testSelect',
           prop: 'testSelect',
           list: [
             {
-              label: '选项一',
+              label: 'Option',
               value: 1,
               disabled: false, //默认是false, 如果需要传true
             },
             {
-              label: '选项二',
+              label: 'Option1',
               value: 2,
               disabled: false, //默认是false, 如果需要传true
             },
@@ -72,24 +72,24 @@ export default {
         {
           type: 'checkbox',
           prop: 'testCheckbox',
-          label: '测试多选框',
+          label: 'testCheckbox',
           list: [
             {
-              label: '选项一',
+              label: 'Option1',
             },
           ],
         },
         {
           type: 'radio',
-          label: '测试单选',
+          label: 'testRadio',
           prop: 'testRadio',
           list: [
             {
-              label: '选项一',
+              label: 'Option1',
               value: 0,
             },
             {
-              label: '选项二',
+              label: 'Option2',
               value: 1,
             },
           ],
@@ -101,21 +101,21 @@ export default {
         // },
         {
           type: 'date',
-          label: '测试日期',
+          label: 'testDate',
           prop: 'testDate',
           // dateType:year/month/date/week/ datetime/datetimerange/daterange
         },
         {
           type: 'slot',
           prop: 'testSlot',
-          label: '插槽',
+          label: 'testSlot',
           rules: [{ required: true }],
         },
         {
           type: 'nativeSlot',
           prop: 'testNativeSlot',
         },
-        { type: 'select', label: '异步下拉框', prop: 'ayncSelect', list: [] },
+        { type: 'select', label: 'ayncSelect', prop: 'ayncSelect', list: [] },
       ],
     }
   },
@@ -127,11 +127,11 @@ export default {
         if (cur.prop === 'ayncSelect') {
           cur.list = [
             {
-              label: '选项一',
+              label: 'Option1',
               value: 1,
             },
             {
-              label: '选项二',
+              label: 'Option2',
               value: 2,
             },
           ]

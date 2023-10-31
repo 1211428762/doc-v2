@@ -1,38 +1,38 @@
-#### 完整示例
+#### Complete Example
 
-## 表单示例
+## Form Example
 
 <cube/><pet/>
 <FormList-example></FormList-example>
-::: details 查看代码
+::: details View Code
 
 ```vue
 <template>
   <div>
     <FormList @handle-event="handleEvent" :elForm.sync="elForm" ref="form" :fieldList="formItem">
-      <!-- 普通插槽 -->
-      <!-- 原templateData写法, 现在不用在父组件定义,使用插槽即可, 用法与之前相同 -->
+      <!-- Regular slot -->
+      <!-- The original templateData is no longer required to be defined in the parent component. Instead, you can use slots with the same usage as before. -->
       <template #testSlot="{ templateData }">
         <el-input v-model="templateData.testSlot"></el-input>
       </template>
-      <!-- 输入框的Prefix 插槽 -->
+      <!-- Input's Prefix slot -->
       <template #testPrefix>
-        <div>输入框的Prefix 插槽</div>
+        <div>Input's Prefix slot</div>
       </template>
-      <!-- 输入框的Suffix 插槽 -->
+      <!-- Input's Suffix slot -->
       <template #testSuffix>
-        <div>输入框的Suffix 插槽</div>
+        <div>Input's Suffix slot</div>
       </template>
-      <!-- 原生el-form-item -->
+      <!-- Original el-form-item -->
       <template #testNativeSlot="{ templateData }">
-        <el-form-item prop="testNativeSlot" label="原生插槽" :rules="[{ required: true }]">
+        <el-form-item prop="testNativeSlot" label="Native Slot" :rules="[{ required: true }]">
           <el-input v-model="templateData.testNativeSlot"></el-input>
         </el-form-item>
       </template>
 
       <template #footer>
-        <el-button @click="submit"> 提交 </el-button>
-        <el-button @click="submit"> 返回 </el-button>
+        <el-button @click="submit">Submit</el-button>
+        <el-button @click="submit">Return</el-button>
       </template>
     </FormList>
   </div>
@@ -54,22 +54,22 @@ export default {
       formItem: [
         {
           type: 'input',
-          label: '输入框',
+          label: 'Input',
           prop: 'test',
           rules: [{ required: true }],
         },
         {
           type: 'select',
-          label: '下拉框',
+          label: 'Select',
           prop: 'testSelect',
           list: [
             {
-              label: '选项一',
+              label: 'Option1',
               value: 1,
               disabled: false, //默认是false, 如果需要传true
             },
             {
-              label: '选项二',
+              label: 'Option2',
               value: 2,
               disabled: false, //默认是false, 如果需要传true
             },
@@ -80,50 +80,50 @@ export default {
         {
           type: 'checkbox',
           prop: 'testCheckbox',
-          label: '测试多选框',
+          label: 'testCheckbox',
           list: [
             {
-              label: '选项一',
+              label: 'Option',
             },
           ],
         },
         {
           type: 'radio',
-          label: '测试单选',
+          label: 'testRadio',
           prop: 'testRadio',
           list: [
             {
-              label: '选项一',
+              label: 'Option1',
               value: 0,
             },
             {
-              label: '选项二',
+              label: 'Option2',
               value: 1,
             },
           ],
         },
         {
           type: 'switch',
-          label: '测试switch',
+          label: 'testSwitch',
           prop: 'testSwitch',
         },
         {
           type: 'date',
-          label: '测试日期',
+          label: 'testDate',
           prop: 'testDate',
           // dateType:year/month/date/week/ datetime/datetimerange/daterange
         },
         {
           type: 'slot',
           prop: 'testSlot',
-          label: '插槽',
+          label: 'testSlot',
           rules: [{ required: true }],
         },
         {
           type: 'nativeSlot',
           prop: 'testNativeSlot',
         },
-        { type: 'select', label: '异步下拉框', prop: 'ayncSelect', list: [] },
+        { type: 'select', label: 'ayncSelect', prop: 'ayncSelect', list: [] },
       ],
     }
   },
@@ -155,88 +155,88 @@ export default {
 
 :::
 
-# 基于 Element 的 FormList(表单)组件
+# FormList Component Based on Element UI
 
 ### Attributes
 
-| 参数       | 说明                                                      | 类型    | 默认  |
+| Parameter       | Description                                                      | Type    | Default  |
 | ---------- | --------------------------------------------------------- | ------- | ----- |
-| fieldList  | 必填,表单项,格式见下表                                    | Array   |       |
-| formData   | 可选,表单数据, 初始值                                     | Object  |       |
-| footer     | 可选,默认表单脚部,含提交返回按钮(建议自定义)              | Boolean | true  |
-| exhibit    | 可选,去除表单项边框等其他样式,以纯文本显示                | Boolean | false |
-| className  | 可选,表单类名                                             | String  |       |
-| loading    | 可选,表单 loading(待改进)                                 | Boolean | true  |
-| elForm     | 可选,表单实例, 会在 mount 后返回给父组件,使用需要带 sync  | Object  |       |
-| labelWidth | 可选,表单 label 宽, 表单加了 $attr ,可被 label-width 替代 | String  | 130px |
-| xxxx       | 可选,el-form 能带的属性, 全部都能直接传给 该组件          |         |       |
+| fieldList  | 	Required: Form items, see format below  | Array   |       |
+| formData   |  Optional: Form data, initial value                                   | Object  |       |
+| footer     | Optional: Default form footer with submit and return buttons (suggested for customizing)              | Boolean | true  |
+| exhibit    | Optional: Remove form item borders and other styles, displaying as plain text               | Boolean | false |
+| className  | Optional: Form class name                                          | String  |       |
+| loading    | Optional: Form loading (to be improved)| Boolean | true  |
+| elForm     | Optional: Form instance, returned to the parent component after mounting, needs to be used with sync  | Object  |       |
+| labelWidth | 	Optional: Form label width, use label-width attribute of the el-form | String  | 130px |
+| xxxx       | Optional: Any attribute that can be applied to el-form, can be directly passed to this component        |         |       |
 
-**注:表单数据在提交前, 一直在子组件内, 如果 父组件需要在表单提交前就需要校验,(如两次密码输入是否一致.出现该组件自带功能难以处理的场景.就 传递 formData,实现"父子组件双向绑定",方便操作 )**
+**Note: The form data is always inside the child component until submission. If the parent component needs to validate the form before submission (e.g., checking if two password inputs match), pass formData to enable "two-way binding" between the parent and child components for easier manipulation.**
 
-### 表单项
+### FormItem
 
-| 参数      | 说明                                                    | 类型    | 可选                                                           |
+| Parameter      | Description                                                    | Type    | Optional                                                           |
 | --------- | ------------------------------------------------------- | ------- | -------------------------------------------------------------- |
-| type      | 必填,表单项类型                                         | String  | input/number/select/checkbox/radio/switch/date/slot/nativeSlot |
-| label     | 必填,表单项文字部分                                     | String  |                                                                |
-| prop      | 必填,表单字段名                                         | String  |                                                                |
-| list      | select/checkbox/radio 等的子选项                        | Array   | 异步操作时在,created hook 赋值                                 |
-| className | 表单项类名                                              | String  |                                                                |
-| half      | 表单项长度折半                                          | Boolean |                                                                |
-| xxx       | 不同类型表单项,自带不同的详细属性,详情见 element 表单项 | String  | disabled,multiple(多选),maxlength(输入框)等等                  |
+| type      | 	Required: Form item type                                        | String  | input/number/select/checkbox/radio/switch/date/slot/nativeSlot |
+| label     | Required: Form item text portion                               | String  |                                                                |
+| prop      | Required: Form field name                                      | String  |                                                                |
+| list      | Sub-options for select/checkbox/radio and similar items| Array   |Assigned during asynchronous operations in the created hook                                |
+| className |  Form item class name                                         | String  |                                                                |
+| half      | Form item length halved                                          | Boolean |                                                                |
+| xxx       | Different form item types come with different specific attributes. For details, refer to element form items documentation | String  |e.g., disabled, multiple (multiple selection), maxlength (input field), and so on              |
 
 ### Events
 
-| 函数名                    | 参数                                 | 说明                                             |
+| Function Name                    | Parameters                                 | 	Description                                             |
 | ------------------------- | ------------------------------------ | ------------------------------------------------ |
-| submitForm                | fn(函数),formName(占位,不建议填)     | 提交校验, fn 为通过校验成功函数,fn 的参数是 form |
-| setDefaultVal             | props(字段名),val(值)                | 父组件手动设置表单某一项的值( 逃生舱方式 )       |
-| handleEvent               | type(类型),val(该项值),key(对应字段) | 表单项独立的事件,以 emit 形式向上传递            |
-| cancel                    |                                      | 表单取消按钮事件,不常用                          |
-| clearValidate/resetFields |                                      | el-form 常用函数                                 |
+| submitForm                |	fn (function), formName (placeholder, not recommended)    | Submits the form with validation. fn is a callback function for successful validation, and its argument is the form data.|
+| setDefaultVal             | props (field name), val (value)           | Allows the parent component to manually set the value of a specific form item. This method provides an "escape hatch."|
+| handleEvent               | 	type (type), val (value for the item), key (corresponding field)| Event emitted by individual form items to communicate changes to the parent.         |
+| cancel                    |                                      |	Event for a form cancel button (not commonly used).                        |
+| clearValidate/resetFields |                                      | 	Common el-form functions for clearing validation and resetting fields.                            |
 
 ### Slot
 
-| 插槽名                  | 说明                                |
+| Slot Name                  | Description                                |
 | ----------------------- | ----------------------------------- |
-| append                  | 添加在其他正常表单项的后            |
-| prop(字段名) + 'Prefix' | 表单项的前插槽, 可理解为 css before |
-| prop(字段名) + 'Suffix' | 表单项的尾插槽,可理解为 css after   |
+| append                  | Inserted after other regular form items.            |
+| prop(field name) + 'Prefix' | Prefix slot for form items, akin to a CSS before pseudo-element. |
+| prop(field name) + 'Suffix' |Suffix slot for form items, akin to a CSS after pseudo-element.  |
 
-**注:**可以通过 css 兄弟元素 选择器, 控制表单项元素, 实现手风琴效果.还有其他妙用, 如同 css 伪元素 ,充满无数可能性
+**Note:**CSS sibling selectors can be used to control form item elements, allowing the creation of accordion-like effects and other creative possibilities. Just like CSS pseudo-elements, the options are boundless.
 
-### 示例
+### Example
 
 ```vue
 <template>
   <div>
     <FormList @handle-event="handleEvent" :elForm.sync="elForm" ref="formList" :fieldList="formItem">
-      <!-- 普通插槽 -->
-      <!-- 原templateData写法, 现在不用在父组件定义,使用插槽即可, 用法与之前相同 -->
+      <!-- Custom slot -->
+      <!-- The original templateData method is no longer necessary. You can now use slots. Usage is the same as before. -->
       <template #testSlot="{ templateData }">
         <el-input v-model="templateData.testSlot"></el-input>
       </template>
-      <!-- 输入框的Prefix 插槽 -->
+      <!-- Prefix slot for input -->
       <template #testPrefix>
-        <div>输入框的Prefix 插槽</div>
+        <div>Prefix slot for the input</div>
       </template>
-      <!-- 输入框的Suffix 插槽 -->
+      <!-- Suffix slot for input -->
       <template #testSuffix>
-        <div>输入框的Suffix 插槽</div>
+        <div>Suffix slot for the input</div>
       </template>
-      <!-- 原生el-form-item -->
+      <!-- Native el-form-item slot -->
       <template #testNativeSlot="{ templateData }">
-        <el-form-item prop="testNativeSlot" label="原生插槽" :rules="[{ required: true }]">
+        <el-form-item prop="testNativeSlot" label="Native slot" :rules="[{ required: true }]">
           <el-input v-model="templateData.testNativeSlot"></el-input>
         </el-form-item>
       </template>
 
       <template #footer>
-        <el-button @click="submit"> 提交 </el-button>
-        <el-button @click="submit"> 返回 </el-button>
+        <el-button @click="submit"> Submit </el-button>
+        <el-button @click="submit"> Return </el-button>
       </template>
     </FormList>
-    <el-button @click="getSelect">获取异步数据</el-button>
+    <el-button @click="getSelect">Get Asynchronous Data</el-button>
   </div>
 </template>
 <script>
@@ -256,22 +256,22 @@ export default {
       formItem: [
         {
           type: 'input',
-          label: '输入框',
+          label: 'Input',
           prop: 'test',
           rules: [{ required: true }],
         },
         {
           type: 'select',
-          label: '下拉框',
+          label: 'testSelect',
           prop: 'testSelect',
           list: [
             {
-              label: '选项一',
+              label: 'Option1',
               value: 1,
               disabled: false, //默认是false, 如果需要传true
             },
             {
-              label: '选项二',
+              label: 'Option2',
               value: 2,
               disabled: false, //默认是false, 如果需要传true
             },
@@ -282,50 +282,50 @@ export default {
         {
           type: 'checkbox',
           prop: 'testCheckbox',
-          label: '测试多选框',
+          label: 'testCheckbox',
           list: [
             {
-              label: '选项一',
+              label: 'Option1',
             },
           ],
         },
         {
           type: 'radio',
-          label: '测试单选',
+          label: 'testRadio',
           prop: 'testRadio',
           list: [
             {
-              label: '选项一',
+              label: 'Option1',
               value: 0,
             },
             {
-              label: '选项二',
+              label: 'Option2',
               value: 1,
             },
           ],
         },
         {
           type: 'icon',
-          label: '图标',
+          label: 'testIcon',
           prop: 'testIcon',
         },
         {
           type: 'date',
-          label: '测试日期',
+          label: 'testDate',
           prop: 'testDate',
           // dateType:year/month/date/week/ datetime/datetimerange/daterange
         },
         {
           type: 'slot',
           prop: 'testSlot',
-          label: '插槽',
+          label: 'testSlot',
           rules: [{ required: true }],
         },
         {
           type: 'nativeSlot',
           prop: 'testNativeSlot',
         },
-        { type: 'select', label: '异步下拉框', prop: 'ayncSelect', list: [] },
+        { type: 'select', label: 'ayncSelect', prop: 'ayncSelect', list: [] },
       ],
     }
   },
@@ -337,11 +337,11 @@ export default {
         if (cur.prop === 'ayncSelect') {
           cur.list = [
             {
-              label: '选项一',
+              label: 'Option1',
               value: 1,
             },
             {
-              label: '选项二',
+              label: 'Option2',
               value: 2,
             },
           ]
@@ -364,8 +364,8 @@ export default {
 
 ####
 
-#### 使用建议
+####  Recommendations
 
-遇到复杂逻辑, 使用 定义 type 为 slot/nativeSlot 提高自由度
+When encountering complex logic, use type with the value of slot or nativeSlot to increase flexibility.
 
-业务组件, 表单极具多变性 , 用多了 就习惯了 ,
+For business components, the form exhibits high variability. Once you get used to it, it becomes a habit.

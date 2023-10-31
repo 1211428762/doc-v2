@@ -1,4 +1,4 @@
-# 主要包含流程图，增删改基本功能以及样式形状，数据打印操作
+# Includes flowchart, basic functions for addition, deletion, and modification, as well as style shapes and data printing operations
 
 <ClientOnly>
 <FlowChart  style="width:1100px !important ;  position: relative; left: -136px;"  ></FlowChart>

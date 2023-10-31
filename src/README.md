@@ -4,7 +4,7 @@ icon: home
 title: Flow-UI
 heroImage: 'img/logo.png'
 heroText: Flow-UI
-tagline: 基于vue的奇思妙想组件库
+tagline: A Creative Component Library Based on Vue
 actions:
   - text: Flow-UI 🚀
     link: /flow/
@@ -14,19 +14,19 @@ actions:
   #   link: /guide/
 
 features:
-  - title: CSS动画案例
+  - title: CSS Animation Examples
     icon: any
-    details: css3动画+JQuery
+    details: CSS3 animations + jQuery
     link: https://www.yzw.ink/cssGame/
 
-  - title: 大屏案例
+  - title: Large Screen Examples
     icon: frame
-    details: echarts媒体大屏
+    details: Echarts media screens
     link: https://www.yzw.ink/Large-Screen/#/
 
-  - title: Flow-UI-old version
+  - title: Flow-UI (old version)
     icon: cycle
-    details: flow-ui vue2+vuepress1.x版本
+    details: Flow-UI Vue 2 + VuePress 1.x version
     link: https://www.yzw.ink/doctest
 
 copyright: false

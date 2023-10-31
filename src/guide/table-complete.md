@@ -1,10 +1,10 @@
-#### 完整示例
+#### Complete Example
 
-## 表格示例
+## Table Example
 
 <cube/><pet/>
 <TableList-example></TableList-example>
-::: details 查看代码
+::: details View Code
 
 ```vue
 <template>
@@ -24,19 +24,19 @@
       @multi-operate="multiOperate"
     >
       <template #content="{ curItem, curTablehead }">
-        <!-- 判断是否是特殊列 -->
+        <!-- Check if it's a special column -->
         <div v-if="curTablehead.isCheckTag">
           <img :src="curItem" alt="" />
-          <!-- 可以添加多个特殊列,继续添加if判断即可 -->
+          <!-- You can add multiple special columns, continue adding 'if' conditions as needed -->
         </div>
         <span v-else>{{ curItem }}</span>
       </template>
       <template #emptyTable>
-        <div class="emptyTable">暂无数据</div>
+        <div class="emptyTable">No data available</div>
       </template>
     </TableList>
-    <el-button @click="tableData = []"> 模拟无数据场景 </el-button>
-    <el-button @click="init"> 请求数据 </el-button>
+    <el-button @click="tableData = []"> Simulate No Data Scenario </el-button>
+    <el-button @click="init"> Request Data </el-button>
   </div>
 </template>
 <script>
@@ -67,48 +67,49 @@ export default {
     pageChange(val) {
       this.tableData = val > 1 ? data.tableData.slice(0, 6) : data.tableData.slice(6)
     },
-    // 使用此方法动态绑定函数
+    // Dynamically bind functions using this method
     listenCall(methodName, row, index) {
       this[methodName](row, index)
     },
     edit(row, index) {
-      this.$message.warning(`当前选中index是${index}`)
+      this.$message.warning(`Currently selected index is ${index}`)
     },
     delete(row, index) {
-      this.$message.info(`当前选中index是${index}`)
+      this.$message.info(`Currently selected index is ${index}`)
     },
     multiOperate(items, ids) {
       if (ids.length) {
-        this.$message.success(`当前选中ids是${ids}`)
+        this.$message.success(`Currently selected IDs are ${ids}`)
       } else {
-        this.$message.error(`未选中数据`)
+        this.$message.error(`No data selected`)
       }
     },
   },
 }
 </script>
+
 ```
 
 :::
 
 ### Attributes
 
-| 参数            | 说明                                                                                                                                                                                                                                                                               | 类型    | 可选值 | 默认值 |
+| Parameter            | Description                                                                                                                                                                                                                                                                               | Type    | Options | Default |
 | :-------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ | :----- | :----- |
-| tableHead       | 表头信息；对象数组，每个对象内应至少包含 prop、label，分别对应字段名称、显示的标题；还可以包含 width：对应为当前列的最小宽度；class：为当前列增加类名；                                                                                                                            | Array   |        | —      |
-| headerCellStyle | 可选，表头行样式                                                                                                                                                                                                                                                                   | Object  |        |        |
-| tableData       | 表格信息；对象数组，每个对象对应一行信息；对象的 key 对应为 tableHead 的 prop，value 对应为相应信息；多余字段不显示，少的字段对应位置空白                                                                                                                                          | Array   |        | —      |
-| addBtnList      | 在表格最后一列加上操作列按钮；对象；应包含 property 对象、button 数组；property(操作列属性)：{width：对应列宽度，label：显示的标题，class：为当前列增加类名}，button：[{ info : 对应展示信息，method：对应方法名，icon:图标，fontColor：文字颜色，iconColor：icon 图标颜色},{},{}] | Object  | —      | false  |
-| showCheckbox    | 是否添加多选列，若为 true，则在表格第一列加上 checkbox 可供多选，并在表格左下方加上批量删除按钮                                                                                                                                                                                    | boolean | —      | false  |
-| pagination      | 可选，是否需要分页器，分页器至于表格右下方                                                                                                                                                                                                                                         | boolean | —      | false  |
-| total           | 总数据量                                                                                                                                                                                                                                                                           | number  |        | 0      |
-| pageSize        | 每页显示条目个数                                                                                                                                                                                                                                                                   | number  |        | 10     |
-| currentPage     | 当前页数                                                                                                                                                                                                                                                                           | number  |        | 1      |
-| loading         | 是否加载中状态                                                                                                                                                                                                                                                                     | boolean | —      | true   |
+| tableHead       | Header information; an array of objects, each object should contain at least prop and label, which correspond to the field name and the displayed title, respectively. It can also include width for the current column's minimum width and class to add a class to the current column.                                                                                                                          | Array   |        | —      |
+| headerCellStyle | ptional, header row style.                                                                                                                                                                                                                                                                 | Object  |        |        |
+| tableData       |Table information; an array of objects, where each object corresponds to one row of information. The object's key corresponds to the prop in tableHead, and the value corresponds to the respective information. Extra fields are not displayed, and missing fields leave the position blank.                                                                                                                                    | Array   |        | —      |
+| addBtnList      | Add an operation column with buttons at the end of the table. It's an object that should include a property object and a button array. property (operation column attributes) contains {width} for the column width, label for the displayed title, and class to add a class to the current column. The button array consists of objects with info for display information, method for the method name, icon for an icon, fontColor for text color, and iconColor for icon color. | Object  | —      | false  |
+| showCheckbox    |Indicates whether to add a multi-select column. If true, a checkbox is added to the first column of the table for multi-selection, and a batch delete button is added to the lower-left corner of the table.                                                                                                                                              | boolean | —      | false  |
+| pagination      | Optional, specifies whether a paginator is needed, and the paginator is located in the lower-right corner of the table.                                                                                                                                                                                                                        | boolean | —      | false  |
+| total           |  The total number of data.                                                                                                                                                                                                                                                                         | number  |        | 0      |
+| pageSize        | The number of items displayed per page.                                                                                                                                                                                                                                  | number  |        | 10     |
+| currentPage     | Current page number.数                                                                                                                                                                                                                                                                           | number  |        | 1      |
+| loading         | Indicates whether the table is in a loading state.                                                                                                                                                                                                                                                                    | boolean | —      | true   |
 
-#### 属性使用示例
+#### Attribute Usage Examples
 
-::: details 查看代码
+::: details View Code
 
 ```vue
 // template
@@ -124,95 +125,170 @@ export default {
   showCheckbox
 >
 </tablelist>
-//data data(){ return{ loading: true; tableHead: [ { prop: 'tenantName', // 字段名 label: '所属租户', width: 150, //
-列宽 class: 'text-center test', // 为列添加类名 }, { prop: 'deptName', label: '组织名称', width: 150, class:
-'text-center', }, ], tableData: [ { tenantName: '111', deptName: "组织部", }, { tenantName: '111', deptName: "宣传部", }
-], addBtnList: { property: { width: 200, // 列宽 label: '操作', class: 'text-center test', // 为列添加类名 }, button: [
-{ info: '编辑', // 文字 method: 'edit', // 方法名 icon:el-icon-edit, // icon，支持element-ui icon type: 'primary', //
-element-ui button type属性 iconColor: red, // icon颜色 fontColor: green, // 字体颜色 }, { info: '删除', method:
-'delete', }, ], }, headerCellStyle:{ // 表头样式 "background": "#F5F5FA", "color": "#8181A5", "font-size": "12px",
-"line-height": "18px", }, totalCount: 100, curPage: 1, pageSize: 10, } }
+
 ```
 
+```js
+// data
+{
+  loading: true,
+  tableHead: [
+    {
+      prop: 'tenantName', // Field name
+      label: 'tenantName', // Label text
+      width: 150, // Column width
+      class: 'text-center test', // Additional class for the column
+    },
+    {
+      prop: 'deptName',
+      label: 'deptName',
+      width: 150,
+      class: 'text-center',
+    },
+  ],
+    tableData: [
+      {
+        tenantName: '111',
+        deptName: 'Organization Department',
+      },
+      {
+        tenantName: '111',
+        deptName: 'Publicity Department',
+      },
+    ],
+    addBtnList: {
+      property: {
+        width: 200,
+        label: 'Action',
+        class: 'text-center test',
+      },
+      button: [
+        {
+          info: 'Edit',
+          method: 'edit',
+          icon: 'el-icon-edit',
+          type: 'primary',
+          iconColor: 'red',
+          fontColor: 'green',
+        },
+        {
+          info: 'Delete',
+          method: 'delete',
+        },
+      ],
+  },
+  headerCellStyle: {
+    "background": "#F5F5FA",
+    "color": "#8181A5",
+    "font-size": "12px",
+    "line-height": "18px",
+  },
+  totalCount: 100,
+  curPage: 1,
+  pageSize: 10,
+}
+
+```
 :::
 
 ### Events
 
-| 事件名称       | 说明                                                           | 参数                                                                                             |
-| :------------- | :------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- |
-| click-callback | 向父级触发自定义事件                                           | methodName:自定义的方法名，row：当前行数据,index:当前行索引                                      |
-| page-change    | currentPage 改变时会触发                                       | val：当前 currentPage 值                                                                         |
-| multi-operate  | 若有 showCheckbox 属性，则会有批量删除操作按钮，点击触发改事件 | items：选中行数据的所有数据数组，ids：若数据有 id 字段，则返回选中行数据的 id 数组，否则为空数组 |
+| Event Name    | Description                                           | Parameters                                      |
+| :------------- | :---------------------------------------------------- | :----------------------------------------------- |
+| click-callback | Triggers a custom event in the parent component.     | methodName: Custom method name, row: Current row data, index: Current row index |
+| page-change    | Triggered when the currentPage changes.               | val: Current currentPage value                   |
+| multi-operate  | If the showCheckbox attribute is enabled, a batch delete operation button will be available, and clicking it triggers this event. | items: All selected row data as an array, ids: If the data contains an id field, it returns an array of the selected row's ids, otherwise, it's an empty array. |
 
-#### 事件使用示例
 
-::: details 查看代码
+#### Event Example
+
+::: details View Code
 
 ```vue
-// template 在属性示例基础上添加
+// template: Add to the property example
 <tablelist @click-callback="listenCall" @page-change="pageChange" @multi-operate="multiOperate">
 </tablelist>
-// method methods: { // 使用此方法动态绑定函数 listenCall(methodName, row, index) { this[methodName](row, index); },
-edit(row, index){}, delete(row, index){}, pageChange(val){}, multiOperate(items,ids){}, }
+
 ```
 
+```js
+methods: {
+  // Use this method to dynamically bind functions
+  listenCall(methodName, row, index) {
+    this[methodName](row, index);
+  },
+  edit(row, index) {
+    // Edit logic
+  },
+  delete(row, index) {
+    // Delete logic
+  },
+  pageChange(val) {
+    // Page change logic
+  },
+  multiOperate(items, ids) {
+    // Multi-operation logic
+  },
+}
+```
 :::
 
 ### Table Slot
 
-| name       | 说明                                                                                                                                                                                                                       |
-| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| content    | 如果您需要自定义表格内容的展现形式，这个 slot 可能会帮到您，该 slot 绑定两个值 curItem：当前 tablecell 的内容，curTablehead：当前列的表头信息；您可以在 tableHead 中添加字段用于判断是否自定义该列内容；默认展现形式为文字 |
-| operate    | 如果您觉得操作列样式不能满足您的需求，这个 slot 可能会帮到您；该 slot 绑定一个 row 值，返回当前行信息                                                                                                                      |
-| emptyTable | 数据为空时自定义显示内容                                                                                                                                                                                                   |
+| Name         | Description                                                                                                                                                                                                                                                                                                                                                              |
+| :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| content      | If you need to customize the presentation of table content, this slot may help you. It is bound to two values: `curItem` (the current table cell's content) and `curTablehead` (the current column's header information). You can add fields in `tableHead` to determine whether to customize the content for that column. The default presentation is text. |
+| operate      | If you find that the style of the operation column doesn't meet your needs, this slot may help you. It is bound to a `row` value, providing the current row's information.                                                                                                                                                                                           |
+| emptyTable   | Customize the content to display when the data is empty.                                                                                                                                                                                                                                                                                                                                                                              |
 
-#### slot --- content 示例
 
-若组件配置项无法满足需求，你可以使用该 slot
-::: details 查看代码
+#### slot --- content Example
+
+If the component configuration options don't meet your needs, you can use this slot.
+::: details View Code
 
 ```vue
-// template 在属性示例基础上添加
+// Add to the template based on the attribute example
 <tablelist>
-	//  curItem为当前数据，curTablehead为当前列表头数据
-    <template #content="{ curItem, curTablehead }">
-      <div v-if="curTablehead.isCheckTag">
-         <el-tag v-if="curItem === '正常'"> {{ curItem }}</el-tag>
-         <el-tag v-else type="danger" @click="clicktest">
-                  {{ curItem }}
-         </el-tag>
-       </div>
-       <span v-else>{{ curItem }}</span>
-    </template>
+  <!-- curItem is the current data, curTablehead is the current column header data -->
+  <template #content="{ curItem, curTablehead }">
+    <div v-if="curTablehead.isCheckTag">
+      <el-tag v-if="curItem === 'Normal'">{{ curItem }}</el-tag>
+      <el-tag v-else type="danger" @click="clicktest">
+        {{ curItem }}
+      </el-tag>
+    </div>
+    <span v-else>{{ curItem }}</span>
+  </template>
 </tablelist>
 
-//data tableHead: [ { prop: 'tenantName', label: '所属租户', width: 150, class: 'text-center test', isCheckTag: true, //
-添加字段用于判断 }, ],
+// data tableHead: [ { prop: 'tenantName', label: 'Tenant', width: 150, class: 'text-center test', isCheckTag: true, //
+// Add fields to determine }
 ```
 
 :::
 
-#### slot --- operate 示例
+#### slot --- operate Example
 
-若组件配置项无法满足需求，你可以使用该 slot
-::: details 查看代码
+If the component configuration options don't meet your needs, you can use this slot.
+::: details View Code
 
 ```vue
-// template 在属性示例基础上添加；您仍需绑定addBtnList到tablelist
+// Add to the template based on the attribute example; You still need to bind addBtnList to tablelist
 <tablelist>
-	//  row为当前行数据
-    <template #operate="{ row }">
-          <el-button
-            v-for="(item, index) in addBtnList.button"
-            :key="index"
-            @click.native.stop="listenCall(item.method, row)"  // 动态绑定方法
-            type="primary"
-            size="small"
-            round
-          >
-            <i class="el-icon-edit" style="color: red;"></i>
-          </el-button>
-    </template>
+  <!-- row is the current row data -->
+  <template #operate="{ row }">
+    <el-button
+      v-for="(item, index) in addBtnList.button"
+      :key="index"
+      @click.native.stop="listenCall(item.method, row)"  // Dynamically bind the method
+      type="primary"
+      size="small"
+      round
+    >
+      <i class="el-icon-edit" style="color: red;"></i>
+    </el-button>
+  </template>
 </tablelist>
 ```
 

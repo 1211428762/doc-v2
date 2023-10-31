@@ -12,11 +12,11 @@ export default defineUserConfig({
       title: 'Flow-UI',
       description: 'Flow-UI plus',
     },
-    // '/zh/': {
-    //   lang: 'zh-CN',
-    //   title: '文档演示',
-    //   description: 'vuepress-theme-hope 的文档演示',
-    // },
+    '/zh/': {
+      lang: 'zh-CN',
+      title: 'Flow-UI',
+      description: 'Flow-UI plus',
+    },
   },
   // bundler: viteBundler({
   //   viteOptions: {

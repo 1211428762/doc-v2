@@ -1,16 +1,16 @@
-# Use Cases
+# 使用场景
 
-## Radio Toggle Form
+## radio 切换表单
 
 <cube/><pet/>
 <FormList-example-radio></FormList-example-radio>
 ::: tip
-In general, for a more pleasant HTML structure, it's better to import form item data through external JS or Vue mixins. The code will look cleaner this way.
+一般来说切换,html 看舒服,js 看着就冗杂了. 表单项的数据最好通过外部 js/vue-mixin 引入,代码看起来会很舒服:smiley:
 <br>
-Instant gratification with code verbosity might feel good for a while, but when it comes time for maintenance, it can be a tearjerker! :joy:
+一时 cv 一时爽, 一直 cv 一直爽, 但真的要维护的时候就要落泪了 :joy:
 :::
 
-::: details View Code
+::: details 查看代码
 
 ```vue
 <template>
@@ -20,67 +20,67 @@ Instant gratification with code verbosity might feel good for a while, but when 
 export default {
   data() {
     return {
-      // Form Items
+      // 表单项
       formItem: [
         {
           type: 'radio',
-          label: 'Toggle Form Items',
+          label: '切换表单项',
           prop: 'radio',
           list: [
             {
               value: 0,
-              label: 'Username and Password',
+              label: '账号密码',
             },
             {
               value: 1,
-              label: 'Age and Gender',
+              label: '年龄性别',
             },
           ],
         },
         {
           type: 'input',
-          label: 'Username',
+          label: '账号',
           prop: 'account',
         },
         {
           type: 'password',
-          label: 'Password',
+          label: '密码',
           prop: 'password',
         },
       ],
-      // Another set of form items for toggling
+      // 准备切换的一套表单项
       formItemChange: [
         {
           type: 'radio',
-          label: 'Toggle Form Items',
+          label: '切换表单项',
           prop: 'radio',
           list: [
             {
               value: 0,
-              label: 'Username and Password',
+              label: '账号密码',
             },
             {
               value: 1,
-              label: 'Age and Gender',
+              label: '年龄性别',
             },
           ],
         },
         {
           type: 'input',
-          label: 'Age',
+          label: '年龄',
           prop: 'account',
         },
         {
           type: 'radio',
-          label: 'Gender',
+          label: '性别',
           prop: 'sex',
           list: [
             {
-              label: 'Male',
+              label: 'male',
               value: 0,
             },
             {
-              label: 'Female',
+              label: 'female',
               value: 1,
             },
           ],
@@ -106,30 +106,29 @@ export default {
   },
 }
 </script>
-
 ```
 
 :::
 
 <FormList-example-radioAppend></FormList-example-radioAppend>
 ::: tip
-Insert the original form item writing. It's not limited to inserting form items; you can also insert other elements. It provides a high degree of flexibility but may result in more complex code. Use at your discretion.
+插入原本表单项写法. 不限于插入表单项,也可以插入其他元素.自由度高,但代码会变冗杂, 自行取舍
 :::
-::: details View Code
+::: details 查看代码
 
 ```vue
 <template>
   <div>
     <FormList :footer="false" :fieldList="formItem" @handle-event="handleEvent">
-      <!-- Use v-if to switch and append items; templateData is the form values of the child component -->
+      <!-- 通过 v-if切换追加项,templateData为子组件的form值-->
       <template v-if="showSlot" #append="{ templateData }">
-        <el-form-item label="Age">
+        <el-form-item label="年龄">
           <el-input v-model="templateData.age"></el-input>
         </el-form-item>
-        <el-form-item label="Gender">
+        <el-form-item label="性别">
           <el-radio-group v-model="templateData.sex">
-            <el-radio label="0">Male</el-radio>
-            <el-radio label="1">Female</el-radio>
+            <el-radio label="0">男</el-radio>
+            <el-radio label="1">女</el-radio>
           </el-radio-group>
         </el-form-item>
       </template>
@@ -145,27 +144,27 @@ export default {
       formItem: [
         {
           type: 'radio',
-          label: 'Toggle Form Items',
+          label: '切换表单项',
           prop: 'radio',
           list: [
             {
               value: 0,
-              label: 'Username and Password',
+              label: '账号密码',
             },
             {
               value: 1,
-              label: 'Age and Gender',
+              label: '年龄性别',
             },
           ],
         },
         {
           type: 'input',
-          label: 'Username',
+          label: '账号',
           prop: 'account',
         },
         {
           type: 'password',
-          label: 'Password',
+          label: '密码',
           prop: 'password',
         },
       ],
@@ -182,7 +181,9 @@ export default {
       }
     },
     radioCase(val, key) {
-      this.showSlot = key === 'radio' ? val === 0 ? false : true : this.showSlot
+      if (key === 'radio') {
+        this.showSlot = val === 0 ? false : true
+      }
     },
   },
 }
@@ -191,17 +192,17 @@ export default {
 
 :::
 
-## Asynchronous Operations
+## 异步操作
 
 <FormList-example-sync></FormList-example-sync>
 
-::: details View Code
+::: details 查看代码
 
 ```vue
 <template>
   <div>
     <FormList :footer="false" :fieldList="formItem" @handle-event="handleEvent"></FormList>
-    <el-button @click="getSelect">Get Asynchronous Data</el-button>
+    <el-button @click="getSelect">获取异步数据</el-button>
   </div>
 </template>
 <script>
@@ -211,7 +212,7 @@ export default {
       formItem: [
         {
           type: 'select',
-          label: 'Asynchronous Dropdown',
+          label: '异步下拉框',
           prop: 'syncSelect',
           list: [],
         },
@@ -225,11 +226,11 @@ export default {
         if (cur.prop === 'syncSelect') {
           cur.list = [
             {
-              label: 'Option 1',
+              label: '选项一',
               value: 1,
             },
             {
-              label: 'Option 2',
+              label: '选项二',
               value: 2,
             },
           ]
@@ -243,19 +244,19 @@ export default {
 
 :::
 
-## Example of Add, Edit, and View Business Scenarios
+## 增删改查业务场景示例
 
 <Business-index></Business-index>
 
-::: details View Code
+::: details 查看代码
 
 ```vue
 index----
 <template>
-	<!-- Prevent the first parameter from becoming an event object by passing undefined -->
-	<el-button @click="operate(undefined)"> Add </el-button>
-	<el-button @click="operate('id')"> Edit </el-button>
-	<el-button @click="detail('id')"> View </el-button>
+	<!-- 防止第一个参数变成event对象,传了undefined -->
+	<el-button @click="operate(undefined)"> 新增 </el-button>
+	<el-button @click="operate('id')">修改</el-button>
+	<el-button @click="detail('id')">详情</el-button>
 	<add ref="add" v-if="showAdd" @refresh="refresh"></add>
 	<detail ref="detail" v-if="showDetail" @refresh="refresh"></detail>
 </template>
@@ -270,15 +271,15 @@ index----
 		},
 		methods: {
 			refresh() {
-				// Request page data
+				// 请求page数据
 			},
 			operate(id) {
 				this.showAdd = true;
-				this.$nextTick(() => { this.$refs.add.init(id); });
+				this.$nextTick(() => { this.$refs.add.init(id););
 			},
 			detail(id) {
 				this.showDetail = true;
-				this.$nextTick(() => { this.$refs.detail.init(id); });
+				this.$nextTick(() => { this.$refs.detail.init(id));
 			},
 		},
 	};
@@ -286,28 +287,29 @@ index----
 
 add---
 <template>
-	<el-dialog :close-on-click-modal="false" :title="form.id ? 'Edit' : 'Add'" :visible.sync="visible">
+	<el-dialog :close-on-click-modal="false" :title="form.id ? '修改' : '新增'" :visible.sync="visible">
 		<FormList :formData="form" :elForm.sync="elForm" ref="formList" :fieldList="formItem" label-width="120px">
 			<template #testSlot="{ templateData }">
 				<el-input v-model="templateData.testSlot"></el-input>
 			</template>
 			<template #testPrefix>
-				<div>Input Slot for Prefix</div>
+				<div>输入框的Prefix 插槽</div>
 			</template>
 			<template #testSuffix>
-				<div>Input Slot for Suffix</div>
+				<div>输入框的Suffix 插槽</div>
 			</template>
 			<template #testNativeSlot="{ templateData }">
-				<el-form-item prop="testNativeSlot" label="Native Slot" :rules="[{ required: true }]">
+				<el-form-item prop="testNativeSlot" label="原生插槽" :rules="[{ required: true }]">
 					<el-input v-model="templateData.testNativeSlot"></el-input>
 				</el-form-item>
 			</template>
 			<template #footer="{ form }">
-				<el-button @click="submit(form)">Submit</el-button>
-				<el-button @click="visible = false">Cancel</el-button>
+				<el-button @click="submit(form)">提交</el-button>
+				<el-button @click="visible = false">取消</el-button>
 			</template>
 		</FormList>
 	</el-dialog>
+	</div>
 </template>
 <script>
 	import mixin from "./mixin";
@@ -323,7 +325,7 @@ add---
 				});
 			},
 			submit(form) {
-				// 1. Using scoped slots, you can directly get the form's values and manually validate.
+				// 1.利用作用域插槽,可直接获取表单的值,手动校验
 				this.elForm.validate((valid) => {
 					if (valid) {
 						this.form.id ? this.edit(form) : this.add(form);
@@ -331,17 +333,17 @@ add---
 						return false;
 					}
 				});
-				// 2. You can also call the submit function inside the FormList component
+				//2.也可以调用FormList组件内的提交函数
 				this.refs.formList.submitForm((form) => {
-					// The form parameter is the validated result, so no need for manual validation.
+					// form 参数为校验成功的结果,无需手动校验
 				});
 			},
 			add(form) {
-				// Upload interface
+				// 上传接口
 				console.log(form);
 			},
 			edit(form) {
-				// Edit interface
+				// 修改接口
 				console.log(form);
 			},
 		},
@@ -351,8 +353,8 @@ add---
 ```
 
 :::
-mixin - Common Code
-::: details  View Code
+mixin 公共代码
+::: details 查看代码
 
 ```js
 import mock from './data'
@@ -377,22 +379,22 @@ export default {
       formItem: [
         {
           type: 'input',
-          label: 'Iuput',
+          label: '输入框',
           prop: 'test',
           rules: [{ required: true }],
         },
         {
           type: 'select',
-          label: 'Select',
+          label: '下拉框',
           prop: 'testSelect',
           list: [
             {
-              label: 'Option1 ',
+              label: '选项一',
               value: 1,
               disabled: false, //默认是false, 如果需要传true
             },
             {
-              label: 'Option2',
+              label: '选项二',
               value: 2,
               disabled: false, //默认是false, 如果需要传true
             },
@@ -402,14 +404,14 @@ export default {
         {
           type: 'checkbox',
           prop: 'testCheckbox',
-          label: 'testCheckbox',
+          label: '测试多选框',
           list: [
             {
-              label: 'Option1',
+              label: '选项一',
               value: 0,
             },
             {
-              label: 'Option2',
+              label: '选项二',
               value: 1,
             },
           ],
@@ -417,15 +419,15 @@ export default {
         },
         {
           type: 'radio',
-          label: 'testRadio',
+          label: '测试单选',
           prop: 'testRadio',
           list: [
             {
-              label: 'Option1',
+              label: '选项一',
               value: 0,
             },
             {
-              label: 'Option2',
+              label: '选项二',
               value: 1,
             },
           ],
@@ -433,20 +435,20 @@ export default {
         },
         {
           type: 'switch',
-          label: 'testSwitch',
+          label: '测试switch',
           prop: 'testSwitch',
           rules: [{ required: true }],
         },
         {
           type: 'date',
-          label: 'testDate',
+          label: '测试日期',
           prop: 'testDate',
           rules: [{ required: true }],
         },
         {
           type: 'slot',
           prop: 'testSlot',
-          label: 'testSlot',
+          label: '插槽',
           rules: [{ required: true }],
         },
         {
@@ -455,7 +457,7 @@ export default {
         },
         {
           type: 'select',
-          label: 'ayncSelect',
+          label: '异步下拉框',
           prop: 'ayncSelect',
           list: [],
         },
@@ -480,20 +482,20 @@ export default {
 :::
 
 <div>
-ps: When you see this, you might be curious about what the "detail" code looks like. It's similar to "add.vue" but with an additional "exhibit" attribute. With the "exhibit" attribute, the original input elements (including various types) have their borders removed, and non-selected items are displayed as plain text.
+ps:　看到这，你会好奇detail代码是长什么样的, 和add.vue差不多,只是多了 "exhibit"属性,
+添加exhibi属性后,将原本的input(含多种类型)除去边框,非选中项,显示纯文本
 
 <br>
-<p><b>Q: Why should we use the FormList component? </b>  
-<br>
-<br>A: To reduce the weight of single Vue files, exercise Vue component thinking, and cultivate the concept of automation tools.<b>"Any repetitive work can be replaced by tools."</b></p>
+<p><b>Q:那我们为什么要使用FormList组件 </b>  
+<br>　A:降低单vue文件重量,锻炼vue组件化思维 ,培养自动化工具理念,<b>"凡重复的工作,都可以被工具取代"</b></p>
 
-<p><b>Q: So, what are the benefits of doing this? 	　</b> 
+<p><b>Q:那这么做到底有什么好处? 	　</b> 
 <br>A:
 				<ol>
- 				<li> It follows the separation of behavior and structure principle during development.</li> 
-				<li> It reduces code coupling, enhances reusability and readability.</li>
-				<li> It may not necessarily increase "maintenance willingness," but at least, after some time, looking at this code won't be a headache.</li>
-				<li> It reduces extensive repetition of tags and "v-if modules" in single files and separates complex logic from structure.</li>
+ 				<li> 遵循开发时行为结构分离原则</li> 
+				<li>降低代码耦合度,提高复用性,和可读性,</li>
+				<li>不能说提高"维护意愿",但至少一段时间后,看到这些代码不会头疼</li>
+				<li>减少单文件大面积重复标签以及"v-if模块",将复杂的逻辑与结构分离开</li>
 				 </ol>
 				</p>
-				  </div> 
+				  </div>

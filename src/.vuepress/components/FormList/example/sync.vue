@@ -2,8 +2,8 @@
   <div>
     <el-card>
       <FormList :footer="false" :fieldList="formItem"></FormList>
-      <el-button @click="getSelect">获取异步数据</el-button>
-      <el-button @click="reset">数据清空</el-button>
+      <el-button @click="getSelect">Get asynchronous data </el-button>
+      <el-button @click="reset">Reset</el-button>
     </el-card>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
       formItem: [
         {
           type: "select",
-          label: "异步下拉框",
+          label: "syncSelect",
           prop: "syncSelect",
           list: [],
         },

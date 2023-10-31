@@ -8,13 +8,13 @@
       >
         <template v-if="showSlot" #append="{ templateData }">
        
-          <el-form-item label="年龄">
+          <el-form-item label="Age">
             <el-input v-model="templateData.age"></el-input>
           </el-form-item>
-          <el-form-item label="性别">
+          <el-form-item label="Gender">
             <el-radio-group v-model="templateData.sex">
-              <el-radio label="0">男</el-radio>
-              <el-radio label="1">女</el-radio>
+              <el-radio label="0">Male</el-radio>
+              <el-radio label="1">Female</el-radio>
             </el-radio-group>
           </el-form-item>
         </template>
@@ -31,27 +31,27 @@ export default {
       formItem: [
         {
           type: "radio",
-          label: "切换表单项",
+          label: "Toggle Form Items",
           prop: "radio",
           list: [
             {
               value: 0,
-              label: "账号密码",
+              label: "Username and Password",
             },
             {
               value: 1,
-              label: "年龄性别",
+              label: "Age and Gender",
             },
           ],
         },
         {
           type: "input",
-          label: "账号",
+          label: "Username",
           prop: "account",
         },
         {
           type: "password",
-          label: "密码",
+          label: "Password",
           prop: "password",
         },
       ],

@@ -1,43 +1,43 @@
-# Form Validation Rules
+# 表单校验规则
 
-## Demonstration
+## 演示
 
-### Common Cases
+### 常规案例
 
 <rules-common/>
 
-### Special Cases
+### 特殊案例
 
 <rule-special/>
-**Note: The format for validation function parameters is as follows:**
+**注:校验函数参数 格式为一下两种**
 
-1. Special rules: _param(special parameter), message, trigger_ (e.g., decimal precision, greater/less than 1).
-2. Regular rules: message, trigger (e.g., email, phone number).
+1. 特殊规则 _param(特殊参数)，message，trigger_(如几位小数精度，大/小于 1)
+2. 普通规则 message，trigger (如邮箱，手机号)
 
-The default value for the message is a multilingual prompt located in src/i18n/page/validator, and the default trigger is ["change", "blur"].
+message 默认值为多语言提示，位于 src/i18n/page/validator 下，
+trigger 默认["change","blur"]
 
-The _rules.ts_ file is located in the _utils_ directory.
+_rules.ts 文件在 utils 下_
 
-## Common Rule Validation
+## 常规规则校验
 
-### Positive Integer Validation (int)
+### 正整数校验(int)
 
 ```js
-// Example Configuration
+//配置案例
 import rules from "@/utils/rules.ts"
 {
-  prop: "test",
-  model: "test",
-  label: "test",
-  rules: [rules.int("module.tip_error", ["change", "blur"])] // Default prompt available, can be omitted
-  // You can pass a single function for a single rule, e.g., rules: rules.int()
-  // The validation function's return value format is {trigger: xxx, message: xxx, validator: xxx}.
-  // You can also use the spread operator to override error messages and triggers. The same applies to all validation functions.
-  // rules: { ...rules.int(), message: "xxx", trigger: xxx }
+prop:"test",
+model:"test",
+label:"test",
+rules:[rules.int("module.tip_error",["change","blur"])] //默认有提示,可不传
+    // 单个规则可单传函数 rules:rules.int()
+     //校验函数返回值 格式  {trigger:xxx,message:xxx,validator:xxx},所以也可以用扩展运算符覆盖错误提示,触发方式,所有校验函数通用
+ // rules:{...rules.int(),message:"xxx",trigger:xxx}
 }
 ```
 
-### Positive Number Validation  (plusNumber)
+### 正数校验(plusNumber)
 
 ```js
 //配置案例
@@ -50,7 +50,7 @@ rules:[rules.plusNumber()]
 }
 ```
 
-### Non-Zero Validation (nonzero)
+### 非零校验(nonzero)
 
 ```js
 //配置案例
@@ -63,7 +63,7 @@ rules:[rules.nonzero()]
 }
 ```
 
-### Number Validation(number)
+### 数字校验(number)
 
 ```js
 //配置案例
@@ -76,7 +76,7 @@ rules:[rules.number()]
 }
 ```
 
-### Decimal/Decimal-Only Input Validation (float)
+### 小数/只能输入小数 校验(float)
 
 ```js
 //配置案例
@@ -89,7 +89,7 @@ rules:[rules.float()]
 }
 ```
 
-### url Validation (url)
+### url 校验(url)
 
 ```js
 //配置案例
@@ -102,7 +102,7 @@ rules:[rules.url()]
 }
 ```
 
-### ip Validation (ip)
+### ip 校验(ip)
 
 ```js
 //配置案例
@@ -115,7 +115,7 @@ rules:[rules.ip()]
 }
 ```
 
-### ID Number Validation(identity)
+### 身份证号校验(identity)
 
 ```js
 //配置案例
@@ -128,7 +128,7 @@ rules:[rules.identity()]
 }
 ```
 
-### Postal Code Validation (postal)
+### 邮政编码校验(postal)
 
 ```js
 //配置案例
@@ -141,7 +141,7 @@ rules:[rules.postal()]
 }
 ```
 
-### Email Validation(email)
+### 邮箱校验(email)
 
 ```js
 //配置案例
@@ -154,7 +154,7 @@ rules:[rules.email()]
 }
 ```
 
-### Mobile Phone  Validation(mobile)
+### 手机号 校验(mobile)
 
 ```js
 //配置案例
@@ -167,7 +167,7 @@ rules:[rules.mobile()]
 }
 ```
 
-###  Phone Number Validation(phone)
+### 座机号 校验(phone)
 
 ```js
 //配置案例
@@ -180,7 +180,7 @@ rules:[rules.phone()]
 }
 ```
 
-### Combined Mobile and  Phone  Validation (phoneAll)
+### 手机座机号 校验(phoneAll)
 
 ```js
 //配置案例
@@ -193,11 +193,11 @@ rules:[rules.phoneAll()]
 }
 ```
 
-## Special Rule Validation
+## 特殊规则校验
 
-Note： that special rule parameters consist of a few initial constraints (usually only one rule). If there are multiple rules, they should be passed in order. The last two parameters are for validation messages and trigger methods (usually taking default values).
+注特殊规则 参数前几位是约束规则（一般只有一个规则），若有多个规则按顺序传入，最后两个参数为 校验 message，和触发方式 trigger（一般取默认值）
 
-### Required Field Validation(required)
+### 空校验(required)
 
 ```js
 //配置案例
@@ -210,7 +210,7 @@ rules:[rules.required(Boolean)] //是否必填。默认必填
 
 ```
 
-### Maximum String Length Validation (maxlength)
+### 字符串最大长度(maxlength)
 
 ```js
 //配置案例
@@ -223,7 +223,7 @@ rules:[rules.maxlength(Number,Boolean)]//输入框最大长度， 第二个参�
 
 ```
 
-### Minimum String Length Validation(minlength)
+### 字符串最小长度(minlength)
 
 ```js
 //配置案例
@@ -236,7 +236,7 @@ rules:[rules.minlength(Number,Boolean)]//输入框最小长度， 第二个参�
 
 ```
 
-### Numeric Precision Validation (precision(number))
+### 数字精度校验 (precision(number))
 
 ```js
 //配置案例
@@ -249,7 +249,7 @@ rules:[rules.precision(n)] //n位小数校验
 }
 ```
 
-### Numeric Range Validation (numCompare(numCompare("gt/gte/lt/lte"+number))
+### 数字范围校验(numCompare("gt/gte/lt/lte"+number))
 
 ```js
 //配置案例
@@ -257,7 +257,7 @@ import rules from "@/utils/rules.ts"
  {
    model: 'title',
    prop: 'title',
-   label: 'Numeric Range',
+   label: '数字范围校验',
    rules: [rules.numCompare('gte1/gt1/lt1/lte1')],  //单范围校验数字 大于等于/大于/小于/小于等于1
    //rules: [rules.numCompare(['gt1','lte100'])],  //区间校验数字 大于1 且小于等于100, 搭配方式自由组合共四种
    //  ['gt1','lt100']   1<x<100   ['gte1','lt100']   1<=x<100
@@ -265,7 +265,7 @@ import rules from "@/utils/rules.ts"
  },
 ```
 
-### Numeric Size Validation (numCompare("gt/gte/lt/lte"+number, message="If comparing two values, message is required")), must be combined with number validation
+### 数值大小校验 (numCompare("gt/gte/lt/lte"+number,message="如果是两个值比较,message 必传")),该场景必须搭配数字校验
 
 ```js
 //配置案例
@@ -281,7 +281,7 @@ import rules from "@/utils/rules.ts"
 rules:[rule.number(),rules.numCompare(["gt1","lte100"])] //带数字校验,输入数字必须大于1,且小于等于100
 ```
 
-### English Title Validation, recommended with multilingual length validation (enRequired)
+### 英文标题校验,建议搭配语言长度校验(enRequired)
 
 ```js
 //配置案例
@@ -294,7 +294,7 @@ import rules from "@/utils/rules.ts"
  },
 ```
 
-###  Future validation(hours)
+### 未来时间校验 future(hours)
 
 ```js
 //配置案例
@@ -312,10 +312,10 @@ import rules from "@/utils/rules.ts"
 <rule-special/>
 
 ::: tip
-Some validation rules involve combined validation. For example, rules:[rules.number(), rules.numCompare('gt10')] first checks if it's a number and then validates the size. In combined validation rules, basic validation comes first, followed by more complex validation.
+部分校验规则存在组合校验，rules:[rules.number(), rules.numCompare('gt10')]先校验是否是数字，再校验大小。组合校验规则是基础校验在前，复杂校验在后。
 :::
 
-::: details View Code
+::: details 查看代码
 
 @[code](./rules-special.vue)
 

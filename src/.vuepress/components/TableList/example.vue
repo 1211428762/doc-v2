@@ -21,12 +21,12 @@
         <span v-else>{{ curItem }}</span>
       </template>
       <template #emptyTable>
-        <div class="emptyTable">暂无数据</div>
+        <div class="emptyTable">No data available</div>
       </template>
     </TableList>
     <br />
-    <el-button @click="tableData = []"> 模拟无数据场景 </el-button>
-    <el-button @click="init"> 请求数据 </el-button>
+    <el-button @click="tableData = []">Simulate No Data Scenario</el-button>
+    <el-button @click="init">Fetch Data</el-button>
   </div>
 </template>
 

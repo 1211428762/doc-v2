@@ -3,12 +3,12 @@ import { sidebar } from 'vuepress-theme-hope'
 export const enSidebar = sidebar({
   '/guide/': [
     {
-      text: 'Elform业务表单',
+      text: 'Elform Business Form',
       icon: 'article',
       link: '/guide',
       // children: [
       //   {
-      //     text: '表单组件',
+      //     text: 'Form Components',
       //     collapsible: true,
       //     icon: 'edit',
       //     children: ['/guide/form-complete', '/guide/form-case'],
@@ -16,52 +16,52 @@ export const enSidebar = sidebar({
       // ],
     },
     {
-      text: '表格组件',
+      text: 'Table Components',
       icon: 'editor',
       collapsible: true,
       // link: '/guide/table-complete',
-      children: [{ text: '表格示例', link: '/guide/table-complete' }],
+      children: [{ text: 'Table Examples', link: '/guide/table-complete' }],
     },
     {
-      text: '表单组件',
+      text: 'Form Components',
       collapsible: true,
       icon: 'edit',
       children: ['/guide/form-complete', '/guide/form-case'],
     },
     {
-      text: '表单规则校验',
+      text: 'Form Rules Validation',
       icon: 'enum',
       link: '/guide/rules/rules',
     },
   ],
   '/flow/': [
-    // { text: '引言', link: '/flow/' },
+    // { text: 'Introduction', link: '/flow/' },
     {
-      text: 'button',
+      text: 'Button',
       link: '/flow/',
     },
     {
-      text: 'viewport',
+      text: 'Viewport',
       link: '/flow/viewport',
     },
     {
-      text: 'dialog',
+      text: 'Dialog',
       link: '/flow/dialog',
     },
     {
-      text: 'area',
+      text: 'Area',
       link: '/flow/area',
     },
     {
-      text: 'toast',
+      text: 'Toast',
       link: '/flow/toast',
     },
     {
-      text: 'badge',
+      text: 'Badge',
       link: '/flow/badge',
     },
     {
-      text: 'flow-chart',
+      text: 'Flow Chart',
       link: '/flow/flow-chart',
     },
   ],

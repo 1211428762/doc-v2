@@ -3,141 +3,132 @@ export default {
     "tableHead": [
       {
         "prop": "id",
-        "label": "ID",
-
+        "label": "ID"
       },
       {
         "prop": "taskName",
-        "label": "任务名称",
-
+        "label": "Task Name"
       },
       {
         "prop": "custom",
-        "label": "自定义",
-        isCheckTag: true,  // 添加字段用于判断
+        "label": "Custom",
+        "isCheckTag": true // Add a field to determine
       },
       {
         "prop": "time",
-        "label": "时间",
-
+        "label": "Time"
       },
       {
         "prop": "place",
-        "label": "地点",
-
+        "label": "Location"
       }
     ],
     "tableData": [
       {
         "id": 1,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/377/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
-
+        "custom": "https://picsum.photos/id/377/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 2,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/42/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
-
+        "custom": "https://picsum.photos/id/42/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 3,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/41/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/41/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 4,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/40/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/40/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
-        "id":5,
-        "taskName": "全国人大会议跟踪报道",
+        "id": 5,
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/39/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/39/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 6,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/38/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/38/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 7,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/37/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/37/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
-        "id":8,
-        "taskName": "全国人大会议跟踪报道",
+        "id": 8,
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/36/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/36/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 9,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/35/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/35/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 10,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/34/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/34/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 11,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/33/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
+        "custom": "https://picsum.photos/id/33/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
       },
       {
         "id": 12,
-        "taskName": "全国人大会议跟踪报道",
+        "taskName": "National People's Congress Meeting Tracking Report",
         "time": "2019-10-12 10:00 ~ 2019-10-13 10:00",
-        custom: "https://picsum.photos/id/32/200/200",
-        "place": "吉林省长春市经济开发区净月大街314号",
-      },
-  
-      
+        "custom": "https://picsum.photos/id/32/200/200",
+        "place": "314 Jingyue Street, Economic Development Zone, Changchun, Jilin Province"
+      }
     ],
     "addBtnList": {
       "property": {
-        width: 200, // 列宽
-        label: "操作",
-        class: "text-center test", // 为列添加类名
+        width: 200, // Column width
+        label: "Actions",
+        class: "text-center test" // Add class to the column
       },
-      button: [
+      "button": [
         {
-          info: "编辑", // 文字
-          method: "edit", // 方法名
-          icon: "el-icon-edit", // icon，支持element-ui icon
-          type: "primary", // element-ui button type属性
-          iconColor: "white", // icon颜色
-          fontColor: "white", // 字体颜色
+          info: "Edit", // Text
+          method: "edit", // Method name
+          icon: "el-icon-edit", // Icon, supports element-ui icons
+          type: "primary", // element-ui button type property
+          iconColor: "white", // Icon color
+          fontColor: "white" // Font color
         },
         {
-          info: "删除",
-          method: "delete",
-        },
-      ],
-    },
+          info: "Delete",
+          method: "delete"
+        }
+      ]
+    }
   }
-
-}
+};

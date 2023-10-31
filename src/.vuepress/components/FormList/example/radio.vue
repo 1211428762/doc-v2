@@ -1,35 +1,34 @@
 <template>
   <div>
-
     <p>
-      说到表单里的radio ,常见的业务需求估计有以下两种,
-      <br />一般来说需要在html 绑定冗杂的js代码 ,违背了行为结构分离原则,
-      主要是下次维护 要看到吐
+      Speaking of radio buttons in forms, there are typically two common business requirements.
+      <br /> In general, binding complex JavaScript code within HTML violates the principle of separation of behavior and structure, mainly because it's hard to maintain next time.
     </p>
 
     <div class="img-demo">
-      <img :src="$withBase('/img/toggle.gif')" alt="" /> <img :src="$withBase('/img/append.gif')" alt="" />
+      <img :src="$withBase('/img/toggle.gif')" alt="" />
+      <img :src="$withBase('/img/append.gif')" alt="" />
     </div>
 
-    <p>一般来说radio 分为: <b>插入</b> ,<b>切换</b></p>
-    <p><b>插入</b> :　 使用formList append插槽即可</p>
+    <p>In general, radio buttons can be categorized into two types: <b>Insertion</b> and <b>Toggling</b>.</p>
+    <p><b>Insertion</b>: Use the FormList's append slot for this.</p>
     <p>
-      <b>切换</b>:　可以选择直接操作fieldList数组(考验数组知识),来实现切换.
-      <br />
-      　　　　　也可以实现就准备两套表单项数组(不易出错)
+      <b>Toggling</b>: You can either directly manipulate the fieldList array (testing your knowledge of arrays) to achieve toggling,
+      <br /> or you can prepare two sets of field item arrays (less error-prone).
     </p>
     <el-divider></el-divider>
-    <p>闲话少说, 直接切换案例:</p>
+    <p>let's see a direct toggling example:</p>
     <el-card>
       <FormList
         :footer="false"
         :fieldList="formItem"
         @handle-event="handleEvent"
-      ></FormList
-    ></el-card>
+      ></FormList>
+    </el-card>
   </div>
 </template>
 <script>
+
 export default {
   name: "radioEle",
   data() {
@@ -37,62 +36,62 @@ export default {
       formItem: [
         {
           type: "radio",
-          label: "切换表单项",
+          label: "Switch Form Items",
           prop: "radio",
           list: [
             {
               value: 0,
-              label: "账号密码",
+              label: "Username and Password",
             },
             {
               value: 1,
-              label: "年龄性别",
+              label: "Age and Gender",
             },
           ],
         },
         {
           type: "input",
-          label: "账号",
+          label: "Username",
           prop: "account",
         },
         {
           type: "password",
-          label: "密码",
+          label: "Password",
           prop: "password",
         },
       ],
       formItemChange: [
         {
           type: "radio",
-          label: "切换表单项",
+          label: "Switch Form Items",
           prop: "radio",
           list: [
             {
               value: 0,
-              label: "账号密码",
+              label: "Username and Password",
             },
             {
               value: 1,
-              label: "年龄性别",
+              label: "Age and Gender",
             },
           ],
         },
         {
           type: "input",
-          label: "年龄",
+          label: "Age",
           prop: "account",
         },
         {
           type: "radio",
-          label: "性别",
+          label: "Gender",
           prop: "sex",
           list: [
             {
-              label: "male",
+              label: "Male",
               value: 0,
             },
             {
-              label: "female",
+              label: "Female",
               value: 1,
             },
           ],
