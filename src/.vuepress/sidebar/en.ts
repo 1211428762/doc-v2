@@ -3,7 +3,7 @@ import { sidebar } from 'vuepress-theme-hope'
 export const enSidebar = sidebar({
   '/guide/': [
     {
-      text: 'Elform Business Form',
+      text: 'CMS Component',
       icon: 'article',
       link: '/guide',
       // children: [

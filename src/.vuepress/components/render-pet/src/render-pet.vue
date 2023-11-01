@@ -18,7 +18,7 @@
 <script setup>
 import inspiration from '@/inspiration/index.js'
 import { ref, nextTick, onBeforeUnmount } from 'vue'
-import { inject } from 'vue'
+import { inject ,onMounted} from 'vue'
 let L2DwidgetSelf
 let changePet = () => {}
 const dog = ref(null)
@@ -27,7 +27,8 @@ const showDog = ref(false)
 //   L2DwidgetSelf = inject('$L2Dwidget')
 //   console.log(window.L2Dwidget)
 // }, 0)
-inspiration.loadCatDependence().then((res) => {
+onMounted(()=>{
+  inspiration.loadCatDependence().then((res) => {
   L2DwidgetSelf = window.L2Dwidget
   // 光nextTick有时候会失效
   //let script = document.createElement('script')
@@ -91,6 +92,8 @@ inspiration.loadCatDependence().then((res) => {
   // 初始加载黑猫
   setTimeout(() => changePet('black'), 0)
 })
+})
+
 
 onBeforeUnmount(() => {
   document.getElementById('cat_wrap')?.remove()

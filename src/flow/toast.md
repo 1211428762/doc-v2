@@ -1,9 +1,9 @@
   <div>
     <cube/><pet/>
-    <h1>提示</h1>
-    <fButton @click="info">默认toast</fButton>
-    <fButton @click="success">成功</fButton>
-    <fButton @click="fail">失败</fButton>
+    <h1>Toast</h1>
+    <fButton @click="info">Default Toast</fButton>
+    <fButton @click="success">Success</fButton>
+    <fButton @click="fail">Failure</fButton>
   </div>
 
 <script>
@@ -21,41 +21,42 @@ export default {
   methods: {
     info() {
       this.$ftoast.info({
-        message: "信息",
+        message: "Information",
       });
     },
     success() {
       this.$ftoast.success({
-        message: "成功",
+        message: "Success",
       });
     },
     fail() {
       this.$ftoast.fail({
-        message: "失败",
+        message: "Failure",
       });
     },
   },
 };
 </script>
 
-toast 推荐挂载到全局
+toast is recommended to be globally mounted.
 
 ### Event
 
-| 类型    | 参数                  | 参数解释                                                                                      | 描述     |
-| ------- | --------------------- | --------------------------------------------------------------------------------------------- | -------- |
-| info    | message,duration,html | message 为文字描述<br />duration 为显示时间,默认 2s<br />html 接受 html 模版字符串效果同 slot | 标准提示 |
-| success | 同 info               |                                                                                               | 成功提示 |
-| fail    | 同 info               |                                                                                               | 失败提示 |
+| Type    | Parameters            | Parameter Description                                                                                  | Description |
+| ------- | ---------------------  | ---------------------------------------------------------------------------------------------            | --------    |
+| info    | message, duration, html | message is text description<br />duration is display time, default 2s<br />html accepts html template string, same effect as slot | Standard prompt |
+| success | Same as info           |                                                                                                         | Success prompt |
+| fail    | Same as info           |                                                                                                         | Failure prompt |
 
-::: details 查看代码
+::: details View Code
+
 
 ```vue
 <template>
   <div>
-    <fButton @click="info">默认toast</fButton>
-    <fButton @click="success">成功</fButton>
-    <fButton @click="fail">失败</fButton>
+    <fButton @click="info">Default Toast</fButton>
+    <fButton @click="success">Success</fButton>
+    <fButton @click="fail">Failure</fButton>
   </div>
 </template>
 <script>
@@ -63,17 +64,17 @@ export default {
   methods: {
     info() {
       this.$ftoast.info({
-        message: '信息',
+        message: 'info',
       })
     },
     success() {
       this.$ftoast.success({
-        message: '成功',
+        message: 'success',
       })
     },
     fail() {
       this.$ftoast.fail({
-        message: '失败',
+        message: 'fail',
       })
     },
   },

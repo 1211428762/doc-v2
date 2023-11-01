@@ -1,9 +1,8 @@
   <div>
   <cube/><pet/>
-  <h1>进入视窗的动画元素</h1>
+  <h1>Elements with Entering Viewport Animations</h1>
     <p>
-      当 <b>元素进入视窗</b> ( <b>缓慢滚动</b> 演示效果更佳,
-      pc/移动均支持),触发的动画,目前支持四种:
+     When an element enters the viewport (with a slow scroll for a better demonstration, supported on both PC and mobile devices), it triggers an animation. Currently, there are four supported directions:
     </p>
     <ClientOnly>
       <section class="viewport-demo">
@@ -11,19 +10,19 @@
           <div class="test">1</div>
           <div class="test">2</div>
           <div class="test">3</div>
-          <p>左右进入</p>
+          <p>Entering from the left and right</p>
         </viewport>
         <viewport direction="left" class="scroll-bar">
           <div class="test">1</div>
-          <p>从左进入</p>
+          <p>Entering from the left</p>
         </viewport>
         <viewport direction="right" class="scroll-bar">
           <div class="test">1</div>
-          <p>从右进入</p>
+          <p>Entering from the right</p>
         </viewport>
         <viewport direction="bottom" class="scroll-bar">
           <div class="test">1</div>
-          <p>从底下进入</p>
+          <p>Entering from the bottom</p>
         </viewport>
         <!-- <p>使用案例</p>
         <viewport direction="bottom" class="scroll-bar viewport-example">
@@ -105,35 +104,36 @@ export default {
 
 ### Attributes
 
-| 属性      | 类型   | 可选值(默认值)                  | 描述                   |
-| --------- | ------ | ------------------------------- | ---------------------- |
-| direction | string | (left,bottom,right,free)/bottom | 元素进入视窗触发的动画 |
-| element   | array  |                                 | 需要监听的元素,可不传, |
+| Attribute  | Type   | Optional Values (Default)     | Description                                 |
+| ---------  | ------ | ------------------------------ | ------------------------------------------- |
+| direction  | string | (left, bottom, right, free)   | The animation triggered when the element enters the viewport |
+| element    | array  |                                | Elements to be observed, optional           |
 
-::: details 查看代码
+::: details View Code
 
 ```vue
 <template>
   <div class="viewport-demo">
-    //如果不传element,则viewport组件内第一级子元素必须是div/section(推荐),内部自动监听第一级元素
-    //需要手动监听元素进入视窗,传入element,使用IntersectionObserver监听(不推荐) //组件可处理单个/多个元素
+   // If `element` is not provided, the first-level child elements within the viewport component must be div/section (recommended) and will be automatically observed.
+    // To manually observe elements when they enter the viewport, provide the `element` attribute and use IntersectionObserver (not recommended).
+    // The component can handle single or multiple elements.
     <viewport direction="free" class="scroll-bar">
       <div class="test">1</div>
       <section class="test">2</section>
       <div class="test">3</div>
-      <p>左右进入</p>
+      <p>Entering from the left and right</p>
     </viewport>
     <viewport direction="left" class="scroll-bar">
       <div class="test">1</div>
-      <p>从左进入</p>
+      <p>Entering from the left</p>
     </viewport>
     <viewport direction="right" class="scroll-bar">
       <div class="test">1</div>
-      <p>从右进入</p>
+      <p>Entering from the right</p>
     </viewport>
     <viewport direction="bottom" class="scroll-bar">
       <div class="test">1</div>
-      <p>从底下进入</p>
+      <p>Entering from the bottom</p>
     </viewport>
   </div>
 </template>
