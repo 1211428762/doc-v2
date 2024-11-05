@@ -36,7 +36,7 @@ export const enSidebar = sidebar({
     {
       text: "Form Table Generator",
       icon: "code",
-      link: "/zh/guide/form-gen",
+      link: "/guide/form-gen",
     },
   ],
   "/flow/": [

@@ -8,6 +8,7 @@ const activeName = ref("form");
 
 <template>
   <div>
+    <img :src="$withBase('/img/codegen.gif')" alt="" />
     <el-tabs v-model="activeName" type="border-card">
       <el-tab-pane :label="_tran('codemaker.formGen')" name="form"
         ><formMaker></formMaker

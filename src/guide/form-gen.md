@@ -17,6 +17,7 @@ The idea of simplifying repetitive tasks to ensure quality and efficiency while 
 Of course there are already low-code tools on the market, but since there is a bit of a barrier to use, this example can be an introductory tool for low-code tools, or it can facilitate subsequent upgrades to drag-and-drop, as a transition.
 <br/>
 In the text box, enter the form form configuration items and click Generate to see the preview page and source code.
+Due to the limitations of vuepress, the full effect is shown here
 
 <ClientOnly>
 <codemaker/></ClientOnly>
