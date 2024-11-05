@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import moEditor from "./moEdior.vue";
 import { useI18n } from "vue-i18n";
 
 import { uniqBy, isEqual } from "lodash-es";
@@ -311,9 +310,11 @@ const generateForm = async () => {
         />
       </el-tab-pane>
       <el-tab-pane :label="_tran('codemaker.code')" name="second">
-        <moEditor :key="activeName" id="tableCode" :code="codeStr"></moEditor
-      ></el-tab-pane>
-
+        <el-input
+    v-model="codeStr"
+    :autosize="{ minRows:4 }"
+    type="textarea"
+  /></el-tab-pane>
       <el-tab-pane :label="_tran('codemaker.lang1')" name="third">
         <el-input
           :key="activeName"

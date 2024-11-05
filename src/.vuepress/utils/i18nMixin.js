@@ -5,7 +5,7 @@ export default {
       _tran: (msg) => msg,
     };
   },
-  created() {
+  mounted() {
     const isCN = window.location.pathname.includes("/zh/");
     const i18nCN = initI18n("zh-CN");
     const i18nEN = initI18n("en");

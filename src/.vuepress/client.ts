@@ -10,8 +10,6 @@ import inspiration from "@/inspiration";
 import { useI18n } from "@/utils/i18n";
 export default defineClientConfig({
   enhance: ({ app, router, siteData }) => {
-    console.log("window.location--->", window.location.pathname);
-
     app.use(ElementPlus).use(globalFuns).use(useI18n);
     // app.use(ElementPlus).use(globalFuns);
     if (!__VUEPRESS_SSR__) {

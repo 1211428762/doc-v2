@@ -4060,11 +4060,6 @@
   "resolved" "https://registry.npmmirror.com/moment-mini/-/moment-mini-2.29.4.tgz"
   "version" "2.29.4"
 
-"monaco-editor@^0.52.0":
-  "integrity" "sha512-OeWhNpABLCeTqubfqLMXGsqf6OmPU6pHM85kF3dhy6kq5hnhuVS1p3VrEW/XhWHc71P2tHyS5JFySD8mgs1crw=="
-  "resolved" "https://registry.npmmirror.com/monaco-editor/-/monaco-editor-0.52.0.tgz"
-  "version" "0.52.0"
-
 "mpegts.js@^1.7.2":
   "integrity" "sha512-qQ1ELBDC4IAqpULFuFzp3hoQeKwD5BCR3UM9Lk2+kj9jCWcXl19spF7PdzX0ZljghPHAj/VL2ajBbGyMWk2fgA=="
   "resolved" "https://registry.npmmirror.com/mpegts.js/-/mpegts.js-1.7.2.tgz"

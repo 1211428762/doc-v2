@@ -158,8 +158,12 @@ const generateForm = async () => {
         ></doc-form-tab>
       </el-tab-pane>
       <el-tab-pane :label="_tran('codemaker.code')" name="second">
-        <moEditor :key="activeName" id="formCode" :code="codeStr"></moEditor
-      ></el-tab-pane>
+        <el-input
+    v-model="codeStr"
+    :autosize="{ minRows:4 }"
+    type="textarea"
+  />
+       </el-tab-pane>
       <el-tab-pane :label="_tran('codemaker.lang1')" name="third">
         <el-input
           :key="activeName"

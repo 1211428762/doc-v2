@@ -56,11 +56,9 @@ export function transformI18n(message: any = "", variable = {}) {
 /** 此函数只是配合i18n Ally插件来进行国际化智能提示，并无实际意义（只对提示起作用），如果不需要国际化可删除 */
 export const $t = (key: string) => key;
 
-const isCN = window.location.pathname.includes("/zh/");
-const locale = isCN ? "zh-CN" : "en";
 export const i18n: I18n = createI18n({
   legacy: false,
-  locale: locale,
+  locale: "en",
   fallbackLocale: "en",
   messages: localesConfigs,
 });
@@ -77,10 +75,14 @@ export function useI18n(app: App) {
 const i18nCN = initI18n("zh-CN");
 const i18nEN = initI18n("en");
 export const _tran = (msg) => {
-  const isCN = window.location.pathname.includes("/zh/");
-  if (isCN) {
-    return i18nCN.global.t.call("zh-CN", msg);
+  if (!__VUEPRESS_SSR__) {
+    const isCN = window.location.pathname.includes("/zh/");
+    if (isCN) {
+      return i18nCN.global.t.call("zh-CN", msg);
+    } else {
+      return i18nEN.global.t.call("en", msg);
+    }
   } else {
-    return i18nEN.global.t.call("en", msg);
+    return msg;
   }
 };
