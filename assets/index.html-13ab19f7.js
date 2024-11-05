@@ -1,1 +1,0 @@
-import{aL as t,O as s,P as n,Q as e}from"./framework-127c80d8.js";const c={},o=e("p",{class:"iframe-title"},"学弟学妹们的面试宝典，后期有空会更新的",-1),r=e("iframe",{src:"https://www.yzw.ink/forInterview"},null,-1),_=[o,r];function a(i,l){return s(),n("div",null,_)}const f=t(c,[["render",a],["__file","index.html.vue"]]);export{f as default};
