@@ -1,8 +1,7 @@
 <template>
   <div>
     <p>
-      Speaking of radio buttons in forms, there are typically two common business requirements.
-      <br /> In general, binding complex JavaScript code within HTML violates the principle of separation of behavior and structure, mainly because it's hard to maintain next time.
+      {{ _tran("word.speakingOfRadio") }}
     </p>
 
     <div class="img-demo">
@@ -10,14 +9,21 @@
       <img :src="$withBase('/img/append.gif')" alt="" />
     </div>
 
-    <p>In general, radio buttons can be categorized into two types: <b>Insertion</b> and <b>Toggling</b>.</p>
-    <p><b>Insertion</b>: Use the FormList's append slot for this.</p>
     <p>
-      <b>Toggling</b>: You can either directly manipulate the fieldList array (testing your knowledge of arrays) to achieve toggling,
-      <br /> or you can prepare two sets of field item arrays (less error-prone).
+      {{ _tran("word.radio1") }}
+      <b> {{ _tran("word.insert") }}</b> , <b> {{ _tran("word.toggle") }}</b
+      >.
+    </p>
+    <p>
+      <b> {{ _tran("word.insert") }}</b
+      >:{{ _tran("word.insert1") }}
+    </p>
+    <p>
+      <b> {{ _tran("word.toggle") }}</b
+      >: {{ _tran("word.toggle1") }}
     </p>
     <el-divider></el-divider>
-    <p>let's see a direct toggling example:</p>
+    <p>{{ _tran("word.example1") }}</p>
     <el-card>
       <FormList
         :footer="false"
@@ -28,7 +34,7 @@
   </div>
 </template>
 <script>
-
+import { _tran } from "@/utils/i18n";
 export default {
   name: "radioEle",
   data() {
@@ -36,62 +42,62 @@ export default {
       formItem: [
         {
           type: "radio",
-          label: "Switch Form Items",
+          label: _tran("page.toggle"),
           prop: "radio",
           list: [
             {
               value: 0,
-              label: "Username and Password",
+              label: _tran("page.namePassword"),
             },
             {
               value: 1,
-              label: "Age and Gender",
+              label: _tran("page.ageGender"),
             },
           ],
         },
         {
           type: "input",
-          label: "Username",
+          label: _tran("page.username"),
           prop: "account",
         },
         {
           type: "password",
-          label: "Password",
+          label: _tran("page.password"),
           prop: "password",
         },
       ],
       formItemChange: [
         {
           type: "radio",
-          label: "Switch Form Items",
+          label: _tran("page.toggle"),
           prop: "radio",
           list: [
             {
               value: 0,
-              label: "Username and Password",
+              label: _tran("page.namePassword"),
             },
             {
               value: 1,
-              label: "Age and Gender",
+              label: _tran("page.ageGender"),
             },
           ],
         },
         {
           type: "input",
-          label: "Age",
+          label: _tran("page.age"),
           prop: "account",
         },
         {
           type: "radio",
-          label: "Gender",
+          label: _tran("page.gender"),
           prop: "sex",
           list: [
             {
-              label: "Male",
+              label: _tran("page.male"),
               value: 0,
             },
             {
-              label: "Female",
+              label: _tran("page.female"),
               value: 1,
             },
           ],
@@ -100,6 +106,7 @@ export default {
     };
   },
   methods: {
+    _tran,
     handleEvent(type, val, key) {
       switch (type) {
         case "radio":

@@ -25,16 +25,18 @@
       </template>
     </TableList>
     <br />
-    <el-button @click="tableData = []">Simulate No Data Scenario</el-button>
-    <el-button @click="init">Fetch Data</el-button>
+    <el-button @click="tableData = []">{{ _tran("page.setNoData") }}</el-button>
+    <el-button @click="init">{{ _tran("page.fetchData") }}</el-button>
   </div>
 </template>
 
 <script>
+import i18nMixin from "@/utils/i18nMixin";
 import mock from "./data.js";
 
 let data = mock.perform;
 export default {
+  mixins: [i18nMixin],
   data() {
     return {
       totalCount: 12,
@@ -74,7 +76,7 @@ export default {
     multiOperate(items, ids) {
       if (ids.length) {
         this.$message.success(`当前选中ids是${ids}`);
-        } else {
+      } else {
         this.$message.error(`未选中数据`);
       }
     },

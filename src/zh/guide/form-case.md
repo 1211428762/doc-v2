@@ -4,6 +4,7 @@
 
 <cube/><pet/>
 <FormList-example-radio></FormList-example-radio>
+
 ::: tip
 一般来说切换,html 看舒服,js 看着就冗杂了. 表单项的数据最好通过外部 js/vue-mixin 引入,代码看起来会很舒服:smiley:
 <br>
@@ -23,88 +24,91 @@ export default {
       // 表单项
       formItem: [
         {
-          type: 'radio',
-          label: '切换表单项',
-          prop: 'radio',
+          type: "radio",
+          label: "切换表单项",
+          prop: "radio",
           list: [
             {
               value: 0,
-              label: '账号密码',
+              label: "账号密码",
             },
             {
               value: 1,
-              label: '年龄性别',
+              label: "年龄性别",
             },
           ],
         },
         {
-          type: 'input',
-          label: '账号',
-          prop: 'account',
+          type: "input",
+          label: "账号",
+          prop: "account",
         },
         {
-          type: 'password',
-          label: '密码',
-          prop: 'password',
+          type: "password",
+          label: "密码",
+          prop: "password",
         },
       ],
       // 准备切换的一套表单项
       formItemChange: [
         {
-          type: 'radio',
-          label: '切换表单项',
-          prop: 'radio',
+          type: "radio",
+          label: "切换表单项",
+          prop: "radio",
           list: [
             {
               value: 0,
-              label: '账号密码',
+              label: "账号密码",
             },
             {
               value: 1,
-              label: '年龄性别',
+              label: "年龄性别",
             },
           ],
         },
         {
-          type: 'input',
-          label: '年龄',
-          prop: 'account',
+          type: "input",
+          label: "年龄",
+          prop: "account",
         },
         {
-          type: 'radio',
-          label: '性别',
-          prop: 'sex',
+          type: "radio",
+          label: "性别",
+          prop: "sex",
           list: [
             {
-              label: 'male',
+              label: "male",
               value: 0,
             },
             {
-              label: 'female',
+              label: "female",
               value: 1,
             },
           ],
         },
       ],
-    }
+    };
   },
   methods: {
     handleEvent(type, val, key) {
       switch (type) {
-        case 'radio':
-          this.radioCase(val, key)
-          break
+        case "radio":
+          this.radioCase(val, key);
+          break;
         default:
-          break
+          break;
       }
     },
     radioCase(val, key) {
-      if (key === 'radio') {
-        ;[this.formItem, this.formItemChange] = [this.formItemChange, this.formItem]
+      if (key === "radio") {
+        [this.formItem, this.formItemChange] = [
+          this.formItemChange,
+          this.formItem,
+        ];
       }
     },
   },
-}
+};
 </script>
 ```
 
@@ -143,50 +147,50 @@ export default {
       showSlot: false,
       formItem: [
         {
-          type: 'radio',
-          label: '切换表单项',
-          prop: 'radio',
+          type: "radio",
+          label: "切换表单项",
+          prop: "radio",
           list: [
             {
               value: 0,
-              label: '账号密码',
+              label: "账号密码",
             },
             {
               value: 1,
-              label: '年龄性别',
+              label: "年龄性别",
             },
           ],
         },
         {
-          type: 'input',
-          label: '账号',
-          prop: 'account',
+          type: "input",
+          label: "账号",
+          prop: "account",
         },
         {
-          type: 'password',
-          label: '密码',
-          prop: 'password',
+          type: "password",
+          label: "密码",
+          prop: "password",
         },
       ],
-    }
+    };
   },
   methods: {
     handleEvent(type, val, key) {
       switch (type) {
-        case 'radio':
-          this.radioCase(val, key)
-          break
+        case "radio":
+          this.radioCase(val, key);
+          break;
         default:
-          break
+          break;
       }
     },
     radioCase(val, key) {
-      if (key === 'radio') {
-        this.showSlot = val === 0 ? false : true
+      if (key === "radio") {
+        this.showSlot = val === 0 ? false : true;
       }
     },
   },
-}
+};
 </script>
 ```
 
@@ -201,7 +205,11 @@ export default {
 ```vue
 <template>
   <div>
-    <FormList :footer="false" :fieldList="formItem" @handle-event="handleEvent"></FormList>
+    <FormList
+      :footer="false"
+      :fieldList="formItem"
+      @handle-event="handleEvent"
+    ></FormList>
     <el-button @click="getSelect">获取异步数据</el-button>
   </div>
 </template>
@@ -211,34 +219,34 @@ export default {
     return {
       formItem: [
         {
-          type: 'select',
-          label: '异步下拉框',
-          prop: 'syncSelect',
+          type: "select",
+          label: "异步下拉框",
+          prop: "syncSelect",
           list: [],
         },
       ],
-    }
+    };
   },
   methods: {
     getSelect() {
       // 异步的select
       this.formItem.filter((cur) => {
-        if (cur.prop === 'syncSelect') {
+        if (cur.prop === "syncSelect") {
           cur.list = [
             {
-              label: '选项一',
+              label: "选项一",
               value: 1,
             },
             {
-              label: '选项二',
+              label: "选项二",
               value: 2,
             },
-          ]
+          ];
         }
-      })
+      });
     },
   },
-}
+};
 </script>
 ```
 
@@ -357,44 +365,44 @@ mixin 公共代码
 ::: details 查看代码
 
 ```js
-import mock from './data'
+import mock from "./data";
 export default {
   data() {
     return {
       visible: false,
       elForm: {},
       form: {
-        id: '',
-        test: '',
-        testSelect: '',
+        id: "",
+        test: "",
+        testSelect: "",
         testCheckbox: [],
-        testRadio: '',
+        testRadio: "",
         testSwitch: false,
-        testDate: '',
-        testSlot: '',
-        testNativeSlot: '',
-        ayncSelect: '',
+        testDate: "",
+        testSlot: "",
+        testNativeSlot: "",
+        ayncSelect: "",
       },
       // 可以通过调整数组顺序,来映射表单项顺序, 删改操作也不用去改复杂的html结构
       formItem: [
         {
-          type: 'input',
-          label: '输入框',
-          prop: 'test',
+          type: "input",
+          label: "输入框",
+          prop: "test",
           rules: [{ required: true }],
         },
         {
-          type: 'select',
-          label: '下拉框',
-          prop: 'testSelect',
+          type: "select",
+          label: "下拉框",
+          prop: "testSelect",
           list: [
             {
-              label: '选项一',
+              label: "选项一",
               value: 1,
               disabled: false, //默认是false, 如果需要传true
             },
             {
-              label: '选项二',
+              label: "选项二",
               value: 2,
               disabled: false, //默认是false, 如果需要传true
             },
@@ -402,81 +410,81 @@ export default {
           rules: [{ required: true }],
         },
         {
-          type: 'checkbox',
-          prop: 'testCheckbox',
-          label: '测试多选框',
+          type: "checkbox",
+          prop: "testCheckbox",
+          label: "测试多选框",
           list: [
             {
-              label: '选项一',
+              label: "选项一",
               value: 0,
             },
             {
-              label: '选项二',
+              label: "选项二",
               value: 1,
             },
           ],
           rules: [{ required: true }],
         },
         {
-          type: 'radio',
-          label: '测试单选',
-          prop: 'testRadio',
+          type: "radio",
+          label: "测试单选",
+          prop: "testRadio",
           list: [
             {
-              label: '选项一',
+              label: "选项一",
               value: 0,
             },
             {
-              label: '选项二',
+              label: "选项二",
               value: 1,
             },
           ],
           rules: [{ required: true }],
         },
         {
-          type: 'switch',
-          label: '测试switch',
-          prop: 'testSwitch',
+          type: "switch",
+          label: "测试switch",
+          prop: "testSwitch",
           rules: [{ required: true }],
         },
         {
-          type: 'date',
-          label: '测试日期',
-          prop: 'testDate',
+          type: "date",
+          label: "测试日期",
+          prop: "testDate",
           rules: [{ required: true }],
         },
         {
-          type: 'slot',
-          prop: 'testSlot',
-          label: '插槽',
+          type: "slot",
+          prop: "testSlot",
+          label: "插槽",
           rules: [{ required: true }],
         },
         {
-          type: 'nativeSlot',
-          prop: 'testNativeSlot',
+          type: "nativeSlot",
+          prop: "testNativeSlot",
         },
         {
-          type: 'select',
-          label: '异步下拉框',
-          prop: 'ayncSelect',
+          type: "select",
+          label: "异步下拉框",
+          prop: "ayncSelect",
           list: [],
         },
       ],
-    }
+    };
   },
   methods: {
     getDetail(id) {
-      if (mock.msg === 'success') {
+      if (mock.msg === "success") {
         Object.keys(mock.data.form).forEach((key) => {
           // 字段一致才行,这里方法,不固定
-          this.form[key] = mock.data.form[key]
-        })
+          this.form[key] = mock.data.form[key];
+        });
       } else {
-        this.$message.error(mock.msg)
+        this.$message.error(mock.msg);
       }
     },
   },
-}
+};
 ```
 
 :::

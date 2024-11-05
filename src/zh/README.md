@@ -2,9 +2,9 @@
 home: true
 icon: home
 title: Flow-UI
-heroImage: 'img/logo.png'
+heroImage: "img/logo.png"
 heroText: Flow-UI
-tagline: 基于vue的奇思妙想组件库
+tagline: 基于vue3的奇思妙想组件库
 actions:
   - text: Flow-UI 🚀
     link: /flow/

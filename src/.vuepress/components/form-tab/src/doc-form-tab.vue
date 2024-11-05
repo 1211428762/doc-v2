@@ -10,8 +10,14 @@
   >
     <template v-for="itemConfig in props.formConfigs" :key="itemConfig.prop">
       <slot v-if="itemConfig.slot" :name="itemConfig.slot"></slot>
-      <div :key="itemConfig.prop" class="tag" v-else-if="itemConfig.type === 'tagHead'">
-        <el-tag effect="dark">{{ itemConfig.prop || itemConfig.text || '' }}</el-tag>
+      <div
+        :key="itemConfig.prop"
+        class="tag"
+        v-else-if="itemConfig.type === 'tagHead'"
+      >
+        <el-tag effect="dark">{{
+          itemConfig.prop || itemConfig.text || ""
+        }}</el-tag>
       </div>
       <el-form-item
         v-else
@@ -31,7 +37,11 @@
                 :disabled="disabled"
                 :is="getComponent(itemConfig)"
                 v-bind="{ ...itemConfig }"
-                v-model="localDataForm[itemConfig.model || itemConfig.prop][language.dictValue]"
+                v-model="
+                  localDataForm[itemConfig.model || itemConfig.prop][
+                    language.dictValue
+                  ]
+                "
                 :config="itemConfig"
               ></component>
             </el-tab-pane>
@@ -51,11 +61,18 @@
   </el-form>
 </template>
 <script>
-import { defineComponent, watchEffect, toRefs, onMounted, reactive, ref } from 'vue'
-
+import {
+  defineComponent,
+  watchEffect,
+  toRefs,
+  onMounted,
+  reactive,
+  ref,
+} from "vue";
+import { ElMessage } from "element-plus";
 export default defineComponent({
-  name: 'DocFormTab',
-  emits: ['update:dataForm'],
+  name: "DocFormTab",
+  emits: ["update:dataForm"],
   props: {
     formConfigs: {
       type: Array,
@@ -71,7 +88,7 @@ export default defineComponent({
     },
     labelWidth: {
       type: String,
-      default: '16%',
+      default: "16%",
     },
     disabled: {
       type: Boolean,
@@ -79,70 +96,80 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const docFormTab = ref(null)
+    const docFormTab = ref(null);
     const state = reactive({
       localDataForm: props.dataForm,
       languageList: [
-        { dictValue: 'en-US', dictLabel: 'English' },
-        { dictValue: 'zh-CN', dictLabel: '简体中文' },
+        { dictValue: "en-US", dictLabel: "English" },
+        { dictValue: "zh-CN", dictLabel: "简体中文" },
       ],
-    })
+    });
     watchEffect(() => {
-      state.localDataForm = props.dataForm
-    })
+      state.localDataForm = props.dataForm;
+    });
     const getComponent = (value) => {
-      const type = value.type
+      const type = value.type;
       switch (type) {
-        case 'tag':
-        case 'tagHead':
-          return 'tab-tag'
-        case 'input':
-        case 'textarea':
-          return 'tab-input'
-        case 'select':
-          return 'tab-select'
-        case 'datetime':
-        case 'datetimerange':
-        case 'daterange':
-          return 'tab-date'
-        case 'number':
-          return 'tab-number'
-        case 'radio':
-          return 'tab-radio'
-        case 'image':
-          return 'tab-image'
-        case 'uploadExcel':
-          return 'tab-upload-excel'
-        case 'checkbox':
-          return 'tab-checkbox'
-        case 'file':
-          return 'tab-file'
+        case "tag":
+        case "tagHead":
+          return "tab-tag";
+        case "input":
+        case "text":
+        case "textarea":
+          return "tab-input";
+        case "select":
+          return "tab-select";
+        case "datetime":
+        case "datetimerange":
+        case "daterange":
+          return "tab-date";
+        case "number":
+          return "tab-number";
+        case "radio":
+          return "tab-radio";
+        case "image":
+          return "tab-image";
+        case "uploadExcel":
+          return "tab-upload-excel";
+        case "checkbox":
+          return "tab-checkbox";
+        case "file":
+          return "tab-file";
         default:
           if (value.componentName) {
-            return value.componentName
+            return value.componentName;
           }
-          ui.message.error('没有传入可以渲染的组件')
-          return ''
+          ElMessage({
+            type: "error",
+            message: `The type ${type} is not supported`,
+            group: true,
+          });
+          return "";
       }
-    }
+    };
     const basicRules = (itemConfig) => {
       return [
         {
-          required: itemConfig.isRequired === undefined ? props.isRequired : itemConfig.isRequired,
-          message: t('validate.required'),
-          trigger: itemConfig.type === 'radio' || itemConfig.type === 'select' ? 'change' : 'blur',
+          required:
+            itemConfig.isRequired === undefined
+              ? props.isRequired
+              : itemConfig.isRequired,
+          trigger:
+            itemConfig.type === "radio" || itemConfig.type === "select"
+              ? "change"
+              : "blur",
         },
-      ]
-    }
+      ];
+    };
     const validateFormNew = async () => {
-      let res = true
+      let res = true;
       try {
-        await docFormTab.value.validate()
-        return res
+        await docFormTab.value.validate();
+        return res;
       } catch (e) {
-        return false
+        return false;
       }
-    }
+    };
     return {
       docFormTab,
       getComponent,
@@ -150,9 +177,9 @@ export default defineComponent({
       validateFormNew,
       props,
       ...toRefs(state),
-    }
+    };
   },
-})
+});
 </script>
 <style scoped>
 .tag {

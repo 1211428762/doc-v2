@@ -10,7 +10,6 @@
       :currentPage="curPage"
       showCheckbox
     >
-    
     </TableList>
   </div>
 </template>
@@ -59,8 +58,8 @@ export default {
             method: "edit", // 方法名
             icon: "el-icon-edit", // icon，支持element-ui icon
             type: "primary", // element-ui button type属性
-            iconColor: red, // icon颜色
-            fontColor: green, // 字体颜色
+            iconColor: "red", // icon颜色
+            fontColor: "green", // 字体颜色
           },
           {
             info: "删除",
@@ -76,5 +75,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

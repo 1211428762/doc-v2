@@ -7,14 +7,13 @@
         @handle-event="handleEvent"
       >
         <template v-if="showSlot" #append="{ templateData }">
-       
-          <el-form-item label="Age">
+          <el-form-item :label="_tran('page.age')">
             <el-input v-model="templateData.age"></el-input>
           </el-form-item>
-          <el-form-item label="Gender">
+          <el-form-item :label="_tran('page.gender')">
             <el-radio-group v-model="templateData.sex">
-              <el-radio label="0">Male</el-radio>
-              <el-radio label="1">Female</el-radio>
+              <el-radio label="0">{{ _tran("page.male") }}</el-radio>
+              <el-radio label="1">{{ _tran("page.female") }}</el-radio>
             </el-radio-group>
           </el-form-item>
         </template>
@@ -24,6 +23,7 @@
 </template>
 
 <script>
+import { _tran } from "@/utils/i18n";
 export default {
   data() {
     return {
@@ -31,33 +31,34 @@ export default {
       formItem: [
         {
           type: "radio",
-          label: "Toggle Form Items",
+          label: _tran("page.toggle"),
           prop: "radio",
           list: [
             {
               value: 0,
-              label: "Username and Password",
+              label: _tran("page.namePassword"),
             },
             {
               value: 1,
-              label: "Age and Gender",
+              label: _tran("page.ageGender"),
             },
           ],
         },
         {
           type: "input",
-          label: "Username",
+          label: _tran("page.username"),
           prop: "account",
         },
         {
           type: "password",
-          label: "Password",
+          label: _tran("page.password"),
           prop: "password",
         },
       ],
     };
   },
   methods: {
+    _tran,
     handleEvent(type, val, key) {
       switch (type) {
         case "radio":
@@ -67,7 +68,7 @@ export default {
           break;
       }
     },
-    radioCase(val, key) { 
+    radioCase(val, key) {
       if (key === "radio") {
         this.showSlot = val === 0 ? false : true;
       }
@@ -76,5 +77,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

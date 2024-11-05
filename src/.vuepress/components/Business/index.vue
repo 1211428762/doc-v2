@@ -1,24 +1,36 @@
 <template>
   <div>
-    <p>Perhaps this scenario is all too familiar in a backend management system; prolonged "copy and paste" work makes the code cumbersome. It's a tearjerker, to say the least. Let's illustrate with an example:</p>
+    <p>
+      {{ _tran("word.example2") }}
+    </p>
     <img :src="$withBase('/img/business.gif')" alt="" />
     <el-divider></el-divider>
     <el-card>
-      <el-button @click="operate(undefined)">Add</el-button>
-      <el-button @click="operate('id')">Edit</el-button>
-      <el-button @click="detail('id')">Details</el-button>
+      <el-button @click="operate(undefined)">
+        {{ _tran("common.add") }}</el-button
+      >
+      <el-button @click="operate('id')"> {{ _tran("common.edit") }}</el-button>
+      <el-button @click="detail('id')"> {{ _tran("common.add") }}</el-button>
     </el-card>
     <el-divider></el-divider>
-    <p>Combining adding and editing, distinguishing based on whether the 'id' data is passed or not:</p>
+    <p>
+      {{ _tran("word.example3") }}
+    </p>
     <div class="describe">
       <img :src="$withBase('/img/directory.png')" alt="" />
       <ol>
-        <li><span>add.vue</span> is the file for adding and editing, coupled together.</li>
-        <li><span>data.js</span> simulates API data.</li>
-        <li><span>detail.vue</span> is the page for displaying details.</li>
-        <li><span>index.vue</span> is the button display page.</li>
         <li>
-          <span>mixin</span> is the file for shared components' data and functions. <a href="https://v3.vuejs.org/guide/mixins.html" target="_blank">Learn about mixins</a>.
+          <span>add.vue</span>
+          {{ _tran("word.fileDesc1") }}
+        </li>
+        <li><span>data.js</span> {{ _tran("word.fileDesc2") }}</li>
+        <li><span>detail.vue</span> {{ _tran("word.fileDesc3") }}</li>
+        <li><span>index.vue</span> {{ _tran("word.fileDesc4") }}</li>
+        <li>
+          <span>mixin</span> {{ _tran("word.fileDesc5") }}
+          <a href="https://v3.vuejs.org/guide/mixins.html" target="_blank">
+            {{ _tran("word.fileDesc6") }}</a
+          >.
         </li>
       </ol>
     </div>
@@ -27,10 +39,10 @@
   </div>
 </template>
 
-
 <script>
-import add from './add.vue'
-import detail from './detail.vue'
+import { _tran } from "@/utils/i18n";
+import add from "./add.vue";
+import detail from "./detail.vue";
 export default {
   components: {
     add,
@@ -40,26 +52,27 @@ export default {
     return {
       showAdd: false,
       showDetail: false,
-    }
+    };
   },
   methods: {
     refresh() {
       // 请求page数据
     },
     operate(id) {
-      this.showAdd = true
+      this.showAdd = true;
       this.$nextTick(() => {
-        this.$refs.add.init(id)
-      })
+        this.$refs.add.init(id);
+      });
     },
     detail(id) {
-      this.showDetail = true
+      this.showDetail = true;
       this.$nextTick(() => {
-        this.$refs.detail.init(id)
-      })
+        this.$refs.detail.init(id);
+      });
     },
+    _tran,
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .describe {

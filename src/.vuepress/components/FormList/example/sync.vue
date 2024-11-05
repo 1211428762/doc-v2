@@ -2,20 +2,23 @@
   <div>
     <el-card>
       <FormList :footer="false" :fieldList="formItem"></FormList>
-      <el-button @click="getSelect">Get asynchronous data </el-button>
-      <el-button @click="reset">Reset</el-button>
+      <el-button @click="getSelect"
+        >{{ _tran("page.getAsyncData") }}
+      </el-button>
+      <el-button @click="reset">{{ _tran("common.reset") }}</el-button>
     </el-card>
   </div>
 </template>
 
 <script>
+import { _tran } from "@/utils/i18n";
 export default {
   data() {
     return {
       formItem: [
         {
           type: "select",
-          label: "syncSelect",
+          label: _tran("page.syncSelect"),
           prop: "syncSelect",
           list: [],
         },
@@ -23,6 +26,7 @@ export default {
     };
   },
   methods: {
+    _tran,
     getSelect() {
       // 异步的select
       this.formItem.filter((cur) => {
@@ -50,4 +54,3 @@ export default {
   },
 };
 </script>
-

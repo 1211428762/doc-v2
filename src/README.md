@@ -2,9 +2,9 @@
 home: true
 icon: home
 title: Flow-UI
-heroImage: 'img/logo.png'
+heroImage: "img/logo.png"
 heroText: Flow-UI
-tagline: A Creative Component Library Based on Vue
+tagline: A Creative Component Library Based on Vue3
 actions:
   - text: Flow-UI 🚀
     link: /flow/

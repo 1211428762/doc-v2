@@ -40,12 +40,17 @@
           :label="item.label"
           :min-width="item.width"
           :fixed="item.fixed"
-          :show-overflow-tooltip="item.showOverflowTooltip === false ? false : true"
+          :show-overflow-tooltip="
+            item.showOverflowTooltip === false ? false : true
+          "
           :class-name="item.class"
           :type="item.type"
         >
           <template #default="scope">
-            <slot name="content" v-bind="{ curItem: scope.row[item.prop], curTablehead: item }">
+            <slot
+              name="content"
+              v-bind="{ curItem: scope.row[item.prop], curTablehead: item }"
+            >
               <span>{{ scope.row[item.prop] }}</span>
             </slot>
           </template>
@@ -54,8 +59,12 @@
         <!-- 自定义操作列 -->
         <el-table-column
           v-if="addBtnList && addBtnList.button.length"
-          :label="addBtnList.property.label ? addBtnList.property.label : '操作'"
-          :min-width="addBtnList.property.width ? addBtnList.property.width : 100"
+          :label="
+            addBtnList.property.label ? addBtnList.property.label : '操作'
+          "
+          :min-width="
+            addBtnList.property.width ? addBtnList.property.width : 100
+          "
           :class-name="addBtnList.property.class"
         >
           <template #default="scope">
@@ -63,7 +72,9 @@
               <el-button
                 v-for="(item, index) in addBtnList.button"
                 :key="index"
-                @click.native.stop="clkCall(item.method, scope.row, scope.$index)"
+                @click.native.stop="
+                  clkCall(item.method, scope.row, scope.$index)
+                "
                 :type="item.type ? item.type : 'text'"
                 size="small"
                 :style="`color: ${item.fontColor}`"
@@ -83,8 +94,15 @@
           selectIds: multipleSelectionIds,
         }"
       >
-        <el-button v-if="showCheckbox" class="delBtn" type="primary" size="small" plain @click="multiOperate"
-          ><i class="el-icon-s-data"></i> {{ multiOperateText }}</el-button
+        <el-button
+          v-if="showCheckbox"
+          class="delBtn"
+          type="primary"
+          size="small"
+          plain
+          @click="multiOperate"
+          ><i class="el-icon-s-data"></i>
+          {{ _tran("common.batchDel") }}</el-button
         >
       </slot>
 
@@ -107,8 +125,12 @@
 </template>
 
 <script>
+import i18nMixin from "@/utils/i18nMixin";
+
 export default {
-  name: 'z-tablelist',
+  name: "z-tablelist",
+
+  mixins: [i18nMixin],
   props: {
     tableHead: { type: [Array], default: () => [] },
     tableData: { type: [Array], default: () => [] },
@@ -120,7 +142,7 @@ export default {
     pageSize: { type: [Number], default: () => 10 },
     currentPage: { type: [Number], default: () => 1 },
 
-    multiOperateText: { type: [String], default: () => '批量删除' },
+    multiOperateText: { type: [String], default: () => "批量删除" },
     headerCellStyle: {
       type: [Object],
       default: () => {
@@ -138,7 +160,7 @@ export default {
     return {
       multipleSelectionIds: [], // 多选的项 --- id
       multipleSelectionItems: [], // 整个项
-    }
+    };
   },
   computed: {},
   watch: {
@@ -155,25 +177,29 @@ export default {
     // 分页
     handleCurrentChange(val) {
       // this.currentPage = val;
-      this.$emit('page-change', val)
+      this.$emit("page-change", val);
     },
     // 自定义操作按钮点击，向父元素触发事件
     clkCall(methodName, row, index) {
-      this.$emit('click-callback', methodName, row, index)
+      this.$emit("click-callback", methodName, row, index);
       // console.log(methodName,row,index);
     },
     // 批量删除所选项
     multiOperate(evt, fn = function () {}) {
-      this.$emit('multi-operate', this.multipleSelectionItems, this.multipleSelectionIds)
-      return fn(this.multipleSelectionItems, this.multipleSelections)
+      this.$emit(
+        "multi-operate",
+        this.multipleSelectionItems,
+        this.multipleSelectionIds
+      );
+      return fn(this.multipleSelectionItems, this.multipleSelections);
     },
     // 获取选中行数据
     handelSelectionChange(val) {
-      this.multipleSelectionIds = val.map((cur) => cur.id)
-      this.multipleSelectionItems = val
+      this.multipleSelectionIds = val.map((cur) => cur.id);
+      this.multipleSelectionItems = val;
     },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -226,7 +252,7 @@ export default {
 .container::after {
   display: block;
   clear: both;
-  content: '';
+  content: "";
 }
 
 .empty-container {

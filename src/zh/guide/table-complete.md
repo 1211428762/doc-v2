@@ -40,8 +40,8 @@
   </div>
 </template>
 <script>
-import mock from './data.js'
-let data = mock.perform
+import mock from "./data.js";
+let data = mock.perform;
 export default {
   data() {
     return {
@@ -52,40 +52,41 @@ export default {
       tableHead: data.tableHead,
       tableData: [],
       addBtnList: data.addBtnList,
-    }
+    };
   },
   mounted() {
-    this.init()
+    this.init();
   },
   methods: {
     init() {
-      this.tableData = data.tableData.slice(0, 6)
+      this.tableData = data.tableData.slice(0, 6);
       setTimeout(() => {
-        this.loading = false
-      }, 300)
+        this.loading = false;
+      }, 300);
     },
     pageChange(val) {
-      this.tableData = val > 1 ? data.tableData.slice(0, 6) : data.tableData.slice(6)
+      this.tableData =
+        val > 1 ? data.tableData.slice(0, 6) : data.tableData.slice(6);
     },
     // 使用此方法动态绑定函数
     listenCall(methodName, row, index) {
-      this[methodName](row, index)
+      this[methodName](row, index);
     },
     edit(row, index) {
-      this.$message.warning(`当前选中index是${index}`)
+      this.$message.warning(`当前选中index是${index}`);
     },
     delete(row, index) {
-      this.$message.info(`当前选中index是${index}`)
+      this.$message.info(`当前选中index是${index}`);
     },
     multiOperate(items, ids) {
       if (ids.length) {
-        this.$message.success(`当前选中ids是${ids}`)
+        this.$message.success(`当前选中ids是${ids}`);
       } else {
-        this.$message.error(`未选中数据`)
+        this.$message.error(`未选中数据`);
       }
     },
   },
-}
+};
 </script>
 ```
 
@@ -124,14 +125,18 @@ export default {
   showCheckbox
 >
 </tablelist>
-//data data(){ return{ loading: true; tableHead: [ { prop: 'tenantName', // 字段名 label: '所属租户', width: 150, //
-列宽 class: 'text-center test', // 为列添加类名 }, { prop: 'deptName', label: '组织名称', width: 150, class:
-'text-center', }, ], tableData: [ { tenantName: '111', deptName: "组织部", }, { tenantName: '111', deptName: "宣传部", }
-], addBtnList: { property: { width: 200, // 列宽 label: '操作', class: 'text-center test', // 为列添加类名 }, button: [
-{ info: '编辑', // 文字 method: 'edit', // 方法名 icon:el-icon-edit, // icon，支持element-ui icon type: 'primary', //
-element-ui button type属性 iconColor: red, // icon颜色 fontColor: green, // 字体颜色 }, { info: '删除', method:
-'delete', }, ], }, headerCellStyle:{ // 表头样式 "background": "#F5F5FA", "color": "#8181A5", "font-size": "12px",
-"line-height": "18px", }, totalCount: 100, curPage: 1, pageSize: 10, } }
+//data data(){ return{ loading: true; tableHead: [ { prop: 'tenantName', //
+字段名 label: '所属租户', width: 150, // 列宽 class: 'text-center test', //
+为列添加类名 }, { prop: 'deptName', label: '组织名称', width: 150, class:
+'text-center', }, ], tableData: [ { tenantName: '111', deptName: "组织部", }, {
+tenantName: '111', deptName: "宣传部", } ], addBtnList: { property: { width:
+200, // 列宽 label: '操作', class: 'text-center test', // 为列添加类名 },
+button: [ { info: '编辑', // 文字 method: 'edit', // 方法名 icon:el-icon-edit,
+// icon，支持element-ui icon type: 'primary', // element-ui button type属性
+iconColor: red, // icon颜色 fontColor: green, // 字体颜色 }, { info: '删除',
+method: 'delete', }, ], }, headerCellStyle:{ // 表头样式 "background":
+"#F5F5FA", "color": "#8181A5", "font-size": "12px", "line-height": "18px", },
+totalCount: 100, curPage: 1, pageSize: 10, } }
 ```
 
 :::
@@ -150,10 +155,15 @@ element-ui button type属性 iconColor: red, // icon颜色 fontColor: green, // 
 
 ```vue
 // template 在属性示例基础上添加
-<tablelist @click-callback="listenCall" @page-change="pageChange" @multi-operate="multiOperate">
+<tablelist
+  @click-callback="listenCall"
+  @page-change="pageChange"
+  @multi-operate="multiOperate"
+>
 </tablelist>
-// method methods: { // 使用此方法动态绑定函数 listenCall(methodName, row, index) { this[methodName](row, index); },
-edit(row, index){}, delete(row, index){}, pageChange(val){}, multiOperate(items,ids){}, }
+// method methods: { // 使用此方法动态绑定函数 listenCall(methodName, row,
+index) { this[methodName](row, index); }, edit(row, index){}, delete(row,
+index){}, pageChange(val){}, multiOperate(items,ids){}, }
 ```
 
 :::
@@ -186,8 +196,8 @@ edit(row, index){}, delete(row, index){}, pageChange(val){}, multiOperate(items,
     </template>
 </tablelist>
 
-//data tableHead: [ { prop: 'tenantName', label: '所属租户', width: 150, class: 'text-center test', isCheckTag: true, //
-添加字段用于判断 }, ],
+//data tableHead: [ { prop: 'tenantName', label: '所属租户', width: 150, class:
+'text-center test', isCheckTag: true, // 添加字段用于判断 }, ],
 ```
 
 :::

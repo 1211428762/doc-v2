@@ -1,11 +1,11 @@
-import { sidebar } from 'vuepress-theme-hope'
+import { sidebar } from "vuepress-theme-hope";
 
 export const enSidebar = sidebar({
-  '/guide/': [
+  "/guide/": [
     {
-      text: 'CMS Component',
-      icon: 'article',
-      link: '/guide',
+      text: "CMS Component",
+      icon: "article",
+      link: "/guide",
       // children: [
       //   {
       //     text: 'Form Components',
@@ -16,53 +16,58 @@ export const enSidebar = sidebar({
       // ],
     },
     {
-      text: 'Table Components',
-      icon: 'editor',
+      text: "Table Components",
+      icon: "editor",
       collapsible: true,
       // link: '/guide/table-complete',
-      children: [{ text: 'Table Examples', link: '/guide/table-complete' }],
+      children: [{ text: "Table Examples", link: "/guide/table-complete" }],
     },
     {
-      text: 'Form Components',
+      text: "Form Components",
       collapsible: true,
-      icon: 'edit',
-      children: ['/guide/form-complete', '/guide/form-case'],
+      icon: "edit",
+      children: ["/guide/form-complete", "/guide/form-case"],
     },
     {
-      text: 'Form Rules Validation',
-      icon: 'enum',
-      link: '/guide/rules/rules',
+      text: "Form Rules Validation",
+      icon: "enum",
+      link: "/guide/rules/rules",
+    },
+    {
+      text: "Form Table Generator",
+      icon: "code",
+      link: "/zh/guide/form-gen",
     },
   ],
-  '/flow/': [
+  "/flow/": [
     // { text: 'Introduction', link: '/flow/' },
     {
-      text: 'Button',
-      link: '/flow/',
+      text: "Button",
+      link: "/flow/",
     },
     {
-      text: 'Viewport',
-      link: '/flow/viewport',
+      text: "Viewport",
+      link: "/flow/viewport",
     },
     {
-      text: 'Dialog',
-      link: '/flow/dialog',
+      text: "Dialog",
+      link: "/flow/dialog",
     },
     {
-      text: 'Area',
-      link: '/flow/area',
+      text: "Area",
+      link: "/flow/area",
     },
     {
-      text: 'Toast',
-      link: '/flow/toast',
+      text: "Toast",
+      link: "/flow/toast",
     },
     {
-      text: 'Badge',
-      link: '/flow/badge',
+      text: "Badge",
+      link: "/flow/badge",
     },
     {
-      text: 'Flow Chart',
-      link: '/flow/flow-chart',
+      text: "Flow Chart",
+      link: "/flow/flow-chart",
     },
   ],
-})
+});
