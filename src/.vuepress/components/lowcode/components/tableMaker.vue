@@ -149,18 +149,18 @@ const generateForm = async () => {
   genColConfigs.value = colArr;
   codeStr.value = `
     <template>
-    <hit-list-wrap>
-        <hit-form
+    <flow-list-wrap>
+        <flow-form
                     :formConfigs="listConfig.state.formConfigs"
                     v-model:dataForm="listConfig.state.dataForm"
                     @onQuery="listConfig.query"
                     @onReset="listConfig.refreshList">
                     <!-- 如果你要自定义表单的按钮，请在此处添加 -->
                     <template #formButton> <el-button >{{ $t('content.customButtons') }}</el-button> </template>
-                    </hit-form>
+                    </flow-form>
                        <el-card>
          <!-- ifAdd 传入按钮权限控制显隐， onAdd为新增事件 -->
-        <hit-table
+        <flow-table
                 :ifAdd="$hasAuth('gatew:add')"
                 @onAdd="openAdd"
                 :dataList="state.dataList"
@@ -171,14 +171,14 @@ const generateForm = async () => {
           <template v-slot:operation>
             <el-table-column :label="$t('common.operate')" fixed="right" width="130px">
               <template v-slot="scope">
-                <hit-action :actionList="state.actionList" :rowInfo="scope.row" @formAction="listConfig.operationHandle" />
+                <flow-action :actionList="state.actionList" :rowInfo="scope.row" @formAction="listConfig.operationHandle" />
               </template>
             </el-table-column>
           </template>
-        </hit-table>
+        </flow-table>
         <el-pagination v-model:current-page="listConfig.state.current" v-model:page-size="listConfig.state.size" :page-sizes="[5, 10, 20, 50]" :background="true" layout="total, sizes, prev, pager, next, jumper" :total="state.total" @size-change="listConfig.handleSizeChange" @current-change="listConfig.handleCurrentChange"></el-pagination>
           </el-card>
-    </hit-list-wrap>
+    </flow-list-wrap>
     </template>
     <script setup lang="ts">
     import { ref , reactive ,onMounted} from 'vue';

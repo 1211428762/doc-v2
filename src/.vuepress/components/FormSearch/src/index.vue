@@ -50,8 +50,8 @@
       >
     </div>
     <el-form
-      class="hit-form"
-      ref="hitFormRef"
+      class="flow-form"
+      ref="flowFormRef"
       :inline="true"
       :model="localDataForm"
       @submit.prevent="query"
@@ -99,11 +99,11 @@ export default defineComponent({
   emits: ["update:dataForm", "onAdd", "onDel", "onRead", "onQuery", "onReset"],
   setup(props) {
     const { t } = useI18n();
-    const hitFormRef = ref<any>(null);
+    const flowFormRef = ref<any>(null);
     const validate = async () => {
       const res = true;
       try {
-        await hitFormRef.value.validate();
+        await flowFormRef.value.validate();
         return res;
       } catch (e) {
         return false;
@@ -113,13 +113,13 @@ export default defineComponent({
       return slot ? "display: inline-block;" : "display: none";
     };
     const resetForm = () => {
-      hitFormRef.value.resetFields();
+      flowFormRef.value.resetFields();
     };
     return {
       props,
       validate,
       resetForm,
-      hitFormRef,
+      flowFormRef,
       slotBtn,
     };
   },
@@ -269,7 +269,7 @@ export default defineComponent({
   }
 }
 
-:deep() .hit-form {
+:deep() .flow-form {
   .el-form-item:last-child {
     margin-right: 0;
   }
@@ -290,7 +290,7 @@ export default defineComponent({
   }
 }
 @media screen and (max-width: 1440px) {
-  :deep() .hit-form {
+  :deep() .flow-form {
     .el-form-item {
       &:not(:last-child) {
         width: 160px;
@@ -299,7 +299,7 @@ export default defineComponent({
   }
 }
 @media screen and (max-width: 640px) {
-  :deep() .hit-form {
+  :deep() .flow-form {
     .el-form-item {
       &:not(:last-child) {
         width: 100%;
